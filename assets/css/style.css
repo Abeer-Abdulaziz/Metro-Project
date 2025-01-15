@@ -1,0 +1,102 @@
+/* إعدادات عامة للصفحة */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+
+/* تنسيق العناوين */
+h1, h2, h3 {
+    text-align: center;
+    color: #333;
+}
+
+/* تنسيق النصوص العامة */
+p {
+    font-size: 16px;
+    color: #666;
+    line-height: 1.6;
+    text-align: center;
+    padding: 10px;
+}
+
+/* تنسيق الروابط */
+a {
+    color: #0056b3;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* تنسيق النموذج (Form) */
+form {
+    width: 100%;
+    max-width: 400px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* تنسيق الحقول */
+input[type="text"], input[type="password"], input[type="email"], textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* تنسيق الأزرار */
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* تنسيق الخانات عند المرور عليها */
+input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focus, textarea:focus {
+    border-color: #4CAF50;
+    outline: none;
+}
+
+/* تخصيص تنسيق لكل صفحة */
+.home-page {
+    background-color: #f0f0f0;
+}
+
+.login-page {
+    background-color: #e0f7fa;
+}
+
+.complaints-page {
+    background-color: #fff3e0;
+}
+
+.station-management-page {
+    background-color: #e8f5e9;
+}
+
+.path-planning-page {
+    background-color: #fffde7;
+}
+
+.journey-tracking-page {
+    background-color: #fce4ec;
+}
+
+.ticketing-page {
+    background-color: #e1bee7;
+}
