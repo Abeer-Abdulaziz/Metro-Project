@@ -7,6 +7,126 @@
     <link rel="stylesheet" href="assets\css\style.css">
     <link rel="icon" href="./assets/favicon.ico" type="image/x-icon">
     <title>Sabic Station - Welcome</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-color: #f4f4f9;
+        }
+
+        header,
+        footer {
+            background-color: #00264d;
+            color: #ffffff;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            margin: 0 10px;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        nav a.active,
+        nav a:hover {
+            background-color: #00509e;
+        }
+
+        .login-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-grow: 1;
+            padding: 20px;
+        }
+
+        .login-card {
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px 30px;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        .login-card h1 {
+            margin-bottom: 20px;
+            color: #00264d;
+        }
+
+        .login-card label {
+            display: block;
+            text-align: left;
+            margin-bottom: 5px;
+            color: #333333;
+        }
+
+        .login-card input[type="text"],
+        .login-card input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #cccccc;
+            border-radius: 5px;
+        }
+
+        .login-card button {
+            background-color: #00509e;
+            color: #ffffff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+        }
+
+        .login-card button:hover {
+            background-color: #003f7d;
+        }
+
+        .login-card a {
+            color: #00509e;
+            text-decoration: none;
+        }
+
+        .login-card a:hover {
+            text-decoration: underline;
+        }
+
+        .show-password,
+        .remember-me {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            margin-bottom: 15px;
+        }
+
+        .show-password input,
+        .remember-me input {
+            margin-right: 10px;
+        }
+
+        footer .footer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        footer img {
+            max-height: 40px;
+        }
+    </style>
 </head>
 
 <body>
@@ -34,36 +154,32 @@
 
     <main>
         <div class="login-container">
-            <h1>تسجيل الدخول</h1>
-            <form action="login-process.php" method="POST">
-                <!-- حقل اسم المستخدم/البريد الإلكتروني -->
-                <label for="username">اسم المستخدم أو البريد الإلكتروني</label>
-                <input type="text" id="username" name="username" placeholder="أدخل اسم المستخدم أو البريد الإلكتروني" required>
-                
-                <!-- حقل كلمة المرور -->
-                <label for="password">كلمة المرور</label>
-                <input type="password" id="password" name="password" placeholder="أدخل كلمة المرور" required>
-                
-                <!-- خيار إظهار/إخفاء كلمة المرور -->
-                <div class="show-password">
-                    <input type="checkbox" id="show-password" onclick="togglePassword()">
-                    <label for="show-password">إظهار كلمة المرور</label>
-                </div>
-                
-                <!-- زر تسجيل الدخول -->
-                <button type="submit" class="login-btn">تسجيل الدخول</button>
-                
-                <!-- رابط نسيت كلمة المرور -->
-                <div class="forgot-password">
-                    <a href="forgot-password.html">نسيت كلمة المرور؟</a>
-                </div>
-                
-                <!-- خيار تذكرني -->
-                <div class="remember-me">
-                    <input type="checkbox" id="remember-me" name="remember-me">
-                    <label for="remember-me">تذكرني</label>
-                </div>
-            </form>
+            <div class="login-card">
+                <h1>تسجيل الدخول</h1>
+                <form action="login-process.php" method="POST">
+                    <label for="username">اسم المستخدم أو البريد الإلكتروني</label>
+                    <input type="text" id="username" name="username" placeholder="أدخل اسم المستخدم أو البريد الإلكتروني" required>
+
+                    <label for="password">كلمة المرور</label>
+                    <input type="password" id="password" name="password" placeholder="أدخل كلمة المرور" required>
+
+                    <div class="show-password">
+                        <input type="checkbox" id="show-password" onclick="togglePassword()">
+                        <label for="show-password">إظهار كلمة المرور</label>
+                    </div>
+
+                    <button type="submit" class="login-btn">تسجيل الدخول</button>
+
+                    <div class="forgot-password">
+                        <a href="forgot-password.html">نسيت كلمة المرور؟</a>
+                    </div>
+
+                    <div class="remember-me">
+                        <input type="checkbox" id="remember-me" name="remember-me">
+                        <label for="remember-me">تذكرني</label>
+                    </div>
+                </form>
+            </div>
         </div>
     </main>
 
@@ -78,7 +194,6 @@
     </footer>
 
     <script>
-        // دالة إظهار/إخفاء كلمة المرور
         function togglePassword() {
             const passwordField = document.getElementById('password');
             passwordField.type = passwordField.type === 'password' ? 'text' : 'password';
