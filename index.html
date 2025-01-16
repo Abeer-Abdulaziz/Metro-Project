@@ -1,15 +1,77 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>الصفحة الرئيسية</title>
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" href="./assets/favicon.ico" type="image/x-icon">
+    <title>Sabic Station - Welcome</title>
 </head>
-<body class="home-page">
 
-    <!-- المحتوى الخاص بالصفحة الرئيسية -->
+<body>
+    <header>
+        <div class="social">
+            <a href="https://x.com/riyadhtransport" target="_blank">
+                <img src="./assets/x.svg" alt="X Logo">
+            </a>
+            <a href="mailto:customercare@riyadhbus.sa">
+                <img src="./assets/email.svg" alt="Email">
+            </a>
+        </div>
+        <div>
+            <nav>
+                <a href="index.html" class="active">الرئيسية</a>
+                <a href="sign-in.html">تسجيل الدخول</a>
+                <a href="station-management.html">إدارة المحطات</a>
+                <a href="journey-tracking.html">تتبع الرحلات</a>
+                <a href="ticketing.html">التذاكر</a>
+                <a href="path-planning.html">مسارات</a>
+                <a href="complaints.html">الشكاوى</a>
+            </nav>
+        </div>
+    </header>
 
-    <script src="assets/js/script.js"></script>
+    <main>
+        <div class="card-container" style="display: flex; justify-content: center; align-items: flex-start; height: 80vh; padding-top: 50px;">
+            <div class="card" style="
+                display: flex;
+                flex-direction: column;
+                width: 35vw;
+                background: rgba(255, 255, 255, 0.8); /* أبيض شفاف */
+                border-radius: 10px;
+                overflow: hidden;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                transition: transform 0.3s, box-shadow 0.3s;
+                margin-top: -50px; /* رفع الكارت للأعلى */
+                ">
+                <div class="card-content" style="padding: 20px; text-align: center;">
+                    <h1 style="color: #000;">مرحباً بك في مدار الرياض</h1>
+                    <h2 style="color: #003366;">مدار يسهل رحلتك بكل راحة</h2>
+                    <p style="color: #333;">مع مدار، خطط، احجز، وانطلق بثقة!</p>
+                    <a href="about-us.html" class="cta-button" style="
+                        display: inline-block;
+                        padding: 10px 20px;
+                        background-color: #003366;
+                        color: white;
+                        border-radius: 5px;
+                        text-decoration: none;
+                        font-size: 16px;">تعرف علينا</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer">
+            <div class="logos">
+                <img src="./assets/university-logo.png" alt="University Logo">
+                <img src="./assets/ccis-logo.png" alt="CCIS Logo">
+            </div>
+            &copy; 2024-25 / IMSIU / CCIS&trade;
+        </div>
+    </footer>
+
 </body>
+
 </html>

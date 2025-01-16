@@ -1,15 +1,194 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تخطيط المسارات</title>
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" href="./assets/favicon.ico" type="image/x-icon">
+    <title>Sabic Station - Welcome</title>
+    <style>
+        body {
+            background-image: url('https://welcomesaudi.com/uploads/0000/64/2024/11/26/13-saudi-to-launch-first-phase-of-riyadh-metro-on-november-27-2024.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #343a40;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #003366;
+            color: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .social img {
+            height: 40px;
+            margin-left: 10px;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            padding: 10px 0;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            padding: 8px 16px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        nav a:hover, nav a.active {
+            background-color: white;
+            color: black;
+        }
+
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin: 40px auto;
+        }
+
+        .card {
+            width: 300px;
+            background: rgba(255, 255, 255, 0.8); /* خلفية شفافة */
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center; /* محتوى الكارت في المنتصف */
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .color-strip {
+            width: 100%;
+            height: 10px;
+        }
+
+        .card-content {
+            padding: 15px;
+        }
+
+        .card-content h3 {
+            color: #00509e;
+            margin: 0 0 10px;
+            font-size: 1.2em;
+        }
+
+        .card-content p {
+            color: #343a40;
+            font-size: 0.9em;
+            line-height: 1.4;
+        }
+
+        footer .footer {
+            text-align: center;
+            padding: 15px;
+            background-color: #003366;
+            color: white;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            border-top: 4px solid #004f9e3e;
+        }
+
+        .logos img {
+            margin-bottom: 10px;
+            height: 50px;
+            margin-right: 15px;
+        }
+    </style>
 </head>
-<body class="path-planning-page">
+<body>
+    <header>
+        <div class="social">
+            <a href="https://x.com/riyadhtransport" target="_blank">
+                <img src="./assets/x.svg" alt="X Logo">
+            </a>
+            <a href="mailto:customercare@riyadhbus.sa">
+                <img src="./assets/email.svg" alt="Email">
+            </a>
+        </div>
+        <div>
+            <nav>
+                <a href="index.html">الرئيسية</a>
+                <a href="sign-in.html">تسجيل الدخول</a>
+                <a href="station-management.html">ادارة المحطات</a>
+                <a href="journey-tracking.html">تتبع الرحلات</a>
+                <a href="path-planning.html" class="active">مسارات</a>
+                <a href="ticketing.html">التذاكر</a>
+                <a href="complaints.html">الشكاوي</a>
+            </nav>
+        </div>
+    </header>
 
-    <!-- المحتوى الخاص بصفحة تخطيط المسارات -->
+    <main>
+        <div class="card-container">
+            <div class="card">
+                <div class="color-strip" style="background-color: #00509e;"></div>
+                <div class="card-content">
+                    <h3>المسار الأزرق</h3>
+                    <p>يربط بين شمال وجنوب الرياض، ويغطي الأحياء السكنية الرئيسية.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="color-strip" style="background-color: #c62828;"></div>
+                <div class="card-content">
+                    <h3>المسار الأحمر</h3>
+                    <p>يمتد من شرق الرياض إلى غربها، ويصل إلى المناطق التجارية.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="color-strip" style="background-color: #2e7d32;"></div>
+                <div class="card-content">
+                    <h3>المسار الأخضر</h3>
+                    <p>يمر عبر وسط الرياض، ويربط بين المرافق الحكومية والأسواق.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="color-strip" style="background-color: #ff9800;"></div>
+                <div class="card-content">
+                    <h3>المسار البرتقالي</h3>
+                    <p>يربط بين المناطق الجديدة في الشرق والغرب.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="color-strip" style="background-color: #fdd835;"></div>
+                <div class="card-content">
+                    <h3>المسار الأصفر</h3>
+                    <p>يمتد إلى المناطق الصناعية، ويخدم العاملين في المنطقة.</p>
+                </div>
+            </div>
+        </div>
+    </main>
 
-    <script src="assets/js/script.js"></script>
+    <footer>
+        <div class="footer">
+            <div class="logos">
+                <img src="./assets/university-logo.png" alt="University Logo">
+                <img src="./assets/ccis-logo.png" alt="CCIS Logo">
+            </div>
+            &copy; 2024-25 / IMSIU / CCIS&trade;
+        </div>
+    </footer>
 </body>
 </html>
