@@ -116,6 +116,20 @@
             height: 50px;
             margin-right: 15px;
         }
+
+        /* إخفاء الكارت الإضافي في البداية */
+        .more-info {
+            display: none;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* إظهار الكارت الإضافي عند الضغط */
+        .show-more .more-info {
+            display: block;
+        }
     </style>
 </head>
 <body>
@@ -143,39 +157,87 @@
 
     <main>
         <div class="card-container">
-            <div class="card">
+            <!-- المسار الأزرق -->
+            <div class="card show-more">
                 <div class="color-strip" style="background-color: #00509e;"></div>
                 <div class="card-content">
                     <h3>المسار الأزرق</h3>
-                    <p>يربط بين شمال وجنوب الرياض، ويغطي الأحياء السكنية الرئيسية.</p>
+                    <p>يبدأ من محطة بنك الأول وينتهي عند محطة دار البيضاء.</p>
+                    <button onclick="toggleMoreInfo(this)">المزيد</button>
+                </div>
+                <div class="more-info">
+                    <p><strong>المرافق المحيطة:</strong> مركز الملك عبد الله المالي، مركز التسوق الرحاب، مدينة الملك عبد الله الرياضية، فنادق متعددة، مقاهي ومطاعم.</p>
+                    <p><strong>الإحصائيات:</strong> عدد المحطات: 13 | المسافة: 20 كم</p>
                 </div>
             </div>
-            <div class="card">
+
+            <!-- المسار الأحمر -->
+            <div class="card show-more">
                 <div class="color-strip" style="background-color: #c62828;"></div>
                 <div class="card-content">
                     <h3>المسار الأحمر</h3>
-                    <p>يمتد من شرق الرياض إلى غربها، ويصل إلى المناطق التجارية.</p>
+                    <p>يبدأ من محطة مدينة الملك فهد الرياضية وينتهي عند محطة جامعة الملك سعود.</p>
+                    <button onclick="toggleMoreInfo(this)">المزيد</button>
+                </div>
+                <div class="more-info">
+                    <p><strong>المرافق المحيطة:</strong> مول الرياض بارك، مستشفى الملك فهد، مجمعات تجارية كبيرة، مطاعم عالمية.</p>
+                    <p><strong>الإحصائيات:</strong> عدد المحطات: 12 | المسافة: 18 كم</p>
                 </div>
             </div>
-            <div class="card">
-                <div class="color-strip" style="background-color: #2e7d32;"></div>
-                <div class="card-content">
-                    <h3>المسار الأخضر</h3>
-                    <p>يمر عبر وسط الرياض، ويربط بين المرافق الحكومية والأسواق.</p>
-                </div>
-            </div>
-            <div class="card">
+
+            <!-- المسار البرتقالي -->
+            <div class="card show-more">
                 <div class="color-strip" style="background-color: #ff9800;"></div>
                 <div class="card-content">
                     <h3>المسار البرتقالي</h3>
-                    <p>يربط بين المناطق الجديدة في الشرق والغرب.</p>
+                    <p>يبدأ من محطة خشم العان وينتهي عند محطة طريق جدة.</p>
+                    <button onclick="toggleMoreInfo(this)">المزيد</button>
+                </div>
+                <div class="more-info">
+                    <p><strong>المرافق المحيطة:</strong> مجمعات سكنية، مرافق رياضية، مراكز تجارية صغيرة.</p>
+                    <p><strong>الإحصائيات:</strong> عدد المحطات: 9 | المسافة: 12 كم</p>
                 </div>
             </div>
-            <div class="card">
-                <div class="color-strip" style="background-color: #fdd835;"></div>
+
+            <!-- المسار الأصفر -->
+            <div class="card show-more">
+                <div class="color-strip" style="background-color: #ffeb3b;"></div>
                 <div class="card-content">
                     <h3>المسار الأصفر</h3>
-                    <p>يمتد إلى المناطق الصناعية، ويخدم العاملين في المنطقة.</p>
+                    <p>يبدأ من محطة صالة مطار الملك خالد 1-2 وينتهي عند محطة المركز المالي.</p>
+                    <button onclick="toggleMoreInfo(this)">المزيد</button>
+                </div>
+                <div class="more-info">
+                    <p><strong>المرافق المحيطة:</strong> مطار الملك خالد الدولي، مركز الملك عبد الله المالي، مراكز تجارية كبيرة، فنادق فاخرة.</p>
+                    <p><strong>الإحصائيات:</strong> عدد المحطات: 14 | المسافة: 25 كم</p>
+                </div>
+            </div>
+
+            <!-- المسار الأخضر -->
+            <div class="card show-more">
+                <div class="color-strip" style="background-color: #388e3c;"></div>
+                <div class="card-content">
+                    <h3>المسار الأخضر</h3>
+                    <p>يبدأ من محطة وزارة التعليم وينتهي عند محطة المتحف الوطني.</p>
+                    <button onclick="toggleMoreInfo(this)">المزيد</button>
+                </div>
+                <div class="more-info">
+                    <p><strong>المرافق المحيطة:</strong> المتحف الوطني، المراكز الثقافية، مكتبة الملك فهد، الجامعات.</p>
+                    <p><strong>الإحصائيات:</strong> عدد المحطات: 7 | المسافة: 10 كم</p>
+                </div>
+            </div>
+
+            <!-- المسار البنفسجي -->
+            <div class="card show-more">
+                <div class="color-strip" style="background-color: #9c27b0;"></div>
+                <div class="card-content">
+                    <h3>المسار البنفسجي</h3>
+                    <p>يبدأ من محطة النسيم وينتهي عند محطة المركز المالي.</p>
+                    <button onclick="toggleMoreInfo(this)">المزيد</button>
+                </div>
+                <div class="more-info">
+                    <p><strong>المرافق المحيطة:</strong> مراكز مالية، مولات، مراكز تجارية، مطاعم.</p>
+                    <p><strong>الإحصائيات:</strong> عدد المحطات: 8 | المسافة: 15 كم</p>
                 </div>
             </div>
         </div>
@@ -187,8 +249,16 @@
                 <img src="./assets/university-logo.png" alt="University Logo">
                 <img src="./assets/ccis-logo.png" alt="CCIS Logo">
             </div>
-            &copy; 2024-25 / IMSIU / CCIS&trade;
+            © 2024-25 / IMSIU / CCIS™
         </div>
     </footer>
+
+    <script>
+        // Toggle function to show/hide additional info
+        function toggleMoreInfo(button) {
+            const card = button.closest('.card');
+            card.classList.toggle('show-more');
+        }
+    </script>
 </body>
 </html>
