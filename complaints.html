@@ -31,18 +31,18 @@
     </header>
 
     <!-- المحتوى الخاص بصفحة الشكاوى -->
-    <div style="display: flex; justify-content: center; align-items: center; min-height: 100vh;">
-        <form id="complaintForm" onsubmit="handleSubmit(event)">
-            <h2 style="text-align: center; color: #333;">يرجى إدخال معلومات الاتصال الخاصة بك</h2>
+    <div style="display: flex; justify-content: center; align-items: flex-start; min-height: 100vh; padding-top: 50px;">
+        <form id="complaintForm" onsubmit="handleSubmit(event)" style="width: 90%; max-width: 400px; background-color: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+            <h2 style="text-align: center; color: #333; margin-bottom: 20px;">يرجى إدخال معلومات الاتصال الخاصة بك</h2>
 
             <!-- Name Input -->
-            <input type="text" name="name" placeholder="الاسم الأول واسم العائلة" required style="margin-bottom: 15px;">
+            <input type="text" name="name" placeholder="الاسم الأول واسم العائلة" required style="margin-bottom: 15px; padding: 10px; width: 100%; border: 1px solid #ddd; border-radius: 8px;">
 
             <!-- Email Input -->
-            <input type="email" name="email" placeholder="عنوان البريد الإلكتروني" required style="margin-bottom: 15px;">
+            <input type="email" name="email" placeholder="عنوان البريد الإلكتروني" required style="margin-bottom: 15px; padding: 10px; width: 100%; border: 1px solid #ddd; border-radius: 8px;">
 
             <!-- Phone Input -->
-            <input type="text" name="phone" placeholder="رقم الهاتف (اختياري)" style="margin-bottom: 15px;">
+            <input type="text" name="phone" placeholder="رقم الهاتف (اختياري)" style="margin-bottom: 15px; padding: 10px; width: 100%; border: 1px solid #ddd; border-radius: 8px;">
 
             <!-- Category Selection -->
             <select name="complaint-category" required style="margin-bottom: 15px; padding: 10px; border-radius: 8px; width: 100%; border: 1px solid #ddd;">
@@ -60,10 +60,10 @@
             </select>
 
             <!-- Complaint Textarea -->
-            <textarea name="complaint" placeholder="يرجى كتابة الشكوى هنا" required style="height: auto; padding: 10px; margin-bottom: 15px; border-radius: 4px; border: 1px solid #ddd; width: 100%;"></textarea>
+            <textarea name="complaint" placeholder="يرجى كتابة الشكوى هنا" required style="height: 100px; padding: 10px; margin-bottom: 15px; border-radius: 8px; border: 1px solid #ddd; width: 100%;"></textarea>
 
             <!-- Submit Button -->
-            <button type="submit">إرسال الشكوى</button>
+            <button type="submit" style="width: 100%; padding: 10px; background-color: #4CAF50; color: white; border: none; border-radius: 8px; cursor: pointer;">إرسال الشكوى</button>
         </form>
 
         <div id="thankYouNote" style="display: none; text-align: center; color: #333; margin-top: 20px;">
