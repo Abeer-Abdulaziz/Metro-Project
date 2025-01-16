@@ -11,10 +11,10 @@
     <header>
         <div class="social">
             <a href="https://x.com/riyadhtransport" target="_blank">
-                <img src="./assets/x.svg" alt="X Logo">
+                <img src="./assets/x.svg" alt="شعار X">
             </a>
             <a href="mailto:customercare@riyadhbus.sa">
-                <img src="./assets/email.svg" alt="Email">
+                <img src="./assets/email.svg" alt="البريد الإلكتروني">
             </a>
         </div>
         <div>
@@ -33,52 +33,52 @@
     <!-- المحتوى الخاص بصفحة الشكاوى -->
     <div style="display: flex; justify-content: center; align-items: center; min-height: 100vh;">
         <form id="complaintForm" onsubmit="handleSubmit(event)">
-            <h2 style="text-align: center; color: #333;">Please Enter Your Contact Information</h2>
+            <h2 style="text-align: center; color: #333;">يرجى إدخال معلومات الاتصال الخاصة بك</h2>
 
             <!-- Name Input -->
-            <input type="text" name="name" placeholder="First and Last Name" required style="margin-bottom: 15px;">
+            <input type="text" name="name" placeholder="الاسم الأول واسم العائلة" required style="margin-bottom: 15px;">
 
             <!-- Email Input -->
-            <input type="email" name="email" placeholder="Email Address" required style="margin-bottom: 15px;">
+            <input type="email" name="email" placeholder="عنوان البريد الإلكتروني" required style="margin-bottom: 15px;">
 
             <!-- Phone Input -->
-            <input type="text" name="phone" placeholder="Phone Number (Optional)" style="margin-bottom: 15px;">
+            <input type="text" name="phone" placeholder="رقم الهاتف (اختياري)" style="margin-bottom: 15px;">
 
             <!-- Category Selection -->
             <select name="complaint-category" required style="margin-bottom: 15px; padding: 10px; border-radius: 8px; width: 100%; border: 1px solid #ddd;">
-                <option value="">Select Complaint Category</option>
-                <option value="service-issues">Service Issues</option>
-                <option value="ticketing">Ticketing and Payment Problems</option>
-                <option value="infrastructure">Station and Train Infrastructure Concerns</option>
-                <option value="safety">Safety and Security Complaints</option>
-                <option value="communication">Communication and Information Gaps</option>
-                <option value="comfort">Comfort and Passenger Experience Issues</option>
-                <option value="parking">Parking and Accessibility Challenges</option>
-                <option value="environment">Environmental Concerns</option>
-                <option value="staff">Staff and Customer Service Feedback</option>
-                <option value="other">Other Passenger Complaints</option>
+                <option value="">اختر فئة الشكوى</option>
+                <option value="service-issues">مشاكل الخدمة</option>
+                <option value="ticketing">مشاكل التذاكر والدفع</option>
+                <option value="infrastructure">مشاكل البنية التحتية للمحطات والقطارات</option>
+                <option value="safety">شكاوى السلامة والأمان</option>
+                <option value="communication">فجوات التواصل والمعلومات</option>
+                <option value="comfort">مشاكل الراحة وتجربة الركاب</option>
+                <option value="parking">مشاكل مواقف السيارات وسهولة الوصول</option>
+                <option value="environment">المخاوف البيئية</option>
+                <option value="staff">ملاحظات على الموظفين وخدمة العملاء</option>
+                <option value="other">شكاوى أخرى</option>
             </select>
 
             <!-- Complaint Textarea -->
-            <textarea name="complaint" placeholder="Please Fill Your Complaint Here" required style="height: 150px; resize: none; margin-bottom: 15px;"></textarea>
+            <textarea name="complaint" placeholder="يرجى كتابة الشكوى هنا" required style="height: auto; padding: 10px; margin-bottom: 15px; border-radius: 4px; border: 1px solid #ddd; width: 100%;"></textarea>
 
             <!-- Submit Button -->
-            <button type="submit">Submit Complaint</button>
+            <button type="submit">إرسال الشكوى</button>
         </form>
 
         <div id="thankYouNote" style="display: none; text-align: center; color: #333; margin-top: 20px;">
-            <h3>Thank you for bringing this to our attention</h3>
-            <p>We will do our best to resolve the problem.</p>
+            <h3>شكرًا لتنبيهنا لهذه المشكلة</h3>
+            <p>سنقوم ببذل قصارى جهدنا لحل المشكلة.</p>
         </div>
     </div>
 
     <footer>
         <div class="footer">
             <div class="logos">
-                <img src="./assets/university-logo.png" alt="University Logo">
-                <img src="./assets/ccis-logo.png" alt="CCIS Logo">
+                <img src="./assets/university-logo.png" alt="شعار الجامعة">
+                <img src="./assets/ccis-logo.png" alt="شعار كلية علوم الحاسب والمعلومات">
             </div>
-            &copy; 2024-25 / IMSIU / CCIS&trade;
+            &copy; 2024-25 / جامعة الإمام محمد بن سعود الإسلامية / كلية علوم الحاسب والمعلومات&trade;
         </div>
     </footer>
 
