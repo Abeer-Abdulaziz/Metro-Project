@@ -1,33 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets\css\style.css">
-    <link rel="icon" href="./assets/favicon.ico" type="image/x-icon">
-    <title>Sabic Station - Welcome</title>
+    <title>تسجيل الدخول - Sabic Station</title>
     <style>
+        /* إعدادات عامة */
         body {
-            font-family: Arial, sans-serif;
+            background-image: url('https://welcomesaudi.com/uploads/0000/64/2024/11/26/13-saudi-to-launch-first-phase-of-riyadh-metro-on-november-27-2024.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
             display: flex;
             flex-direction: column;
             min-height: 100vh;
-            background-color: #f4f4f9;
+            direction: rtl;
         }
 
         header,
         footer {
-            background-color: #00264d;
+            background-color: #003366;
             color: #ffffff;
             text-align: center;
             padding: 10px 0;
         }
 
         nav a {
-            color: #ffffff;
+            color: white;
             text-decoration: none;
             margin: 0 10px;
             padding: 5px 10px;
@@ -36,9 +38,11 @@
 
         nav a.active,
         nav a:hover {
-            background-color: #00509e;
+            background-color: white;
+            color: black;
         }
 
+        /* تصميم الكارت */
         .login-container {
             display: flex;
             justify-content: center;
@@ -48,23 +52,22 @@
         }
 
         .login-card {
-            background: #ffffff;
+            background: #ffffffdd;
             border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            padding: 20px 30px;
+            padding: 30px 40px;
             width: 100%;
             max-width: 400px;
-            text-align: center;
+            text-align: right;
         }
 
         .login-card h1 {
             margin-bottom: 20px;
-            color: #00264d;
+            color: #003366;
         }
 
         .login-card label {
             display: block;
-            text-align: left;
             margin-bottom: 5px;
             color: #333333;
         }
@@ -76,6 +79,7 @@
             margin-bottom: 15px;
             border: 1px solid #cccccc;
             border-radius: 5px;
+            text-align: right;
         }
 
         .login-card button {
@@ -93,61 +97,56 @@
             background-color: #003f7d;
         }
 
-        .login-card a {
+        .options-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .options-container div {
+            display: flex;
+            align-items: center;
+        }
+
+        .options-container input {
+            margin-left: 10px;
+        }
+
+        .forgot-password {
+            text-align: right;
+            margin-bottom: 15px;
+        }
+
+        .forgot-password a {
             color: #00509e;
             text-decoration: none;
         }
 
-        .login-card a:hover {
+        .forgot-password a:hover {
             text-decoration: underline;
         }
 
-        .show-password,
-        .remember-me {
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            margin-bottom: 15px;
-        }
-
-        .show-password input,
-        .remember-me input {
-            margin-right: 10px;
-        }
-
         footer .footer {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-
-        footer img {
-            max-height: 40px;
+            text-align: center;
+            padding: 15px;
+            background-color: #003366;
+            color: white;
         }
     </style>
 </head>
 
 <body>
     <header>
-        <div class="social">
-            <a href="https://x.com/riyadhtransport" target="_blank">
-                <img src="./assets/x.svg" alt="X Logo">
-            </a>
-            <a href="mailto:customercare@riyadhbus.sa">
-                <img src="./assets/email.svg" alt="Email">
-            </a>
-        </div>
         <div>
             <nav>
                 <a href="index.html">الرئيسية</a>
                 <a href="sign-in.html" class="active">تسجيل الدخول</a>
-                <a href="station-management.html">ادارة المحطات</a>
+                <a href="station-management.html">إدارة المحطات</a>
                 <a href="journey-tracking.html">تتبع الرحلات</a>
                 <a href="path-planning.html">مسارات</a>
                 <a href="ticketing.html">التذاكر</a>
-                <a href="complaints.html">الشكاوي</a>
+                <a href="complaints.html">الشكاوى</a>
             </nav>
         </div>
     </header>
@@ -157,27 +156,28 @@
             <div class="login-card">
                 <h1>تسجيل الدخول</h1>
                 <form action="login-process.php" method="POST">
+                    <div class="forgot-password">
+                        <a href="forgot-password.html">نسيت كلمة المرور؟</a>
+                    </div>
+
                     <label for="username">اسم المستخدم أو البريد الإلكتروني</label>
                     <input type="text" id="username" name="username" placeholder="أدخل اسم المستخدم أو البريد الإلكتروني" required>
 
                     <label for="password">كلمة المرور</label>
                     <input type="password" id="password" name="password" placeholder="أدخل كلمة المرور" required>
 
-                    <div class="show-password">
-                        <input type="checkbox" id="show-password" onclick="togglePassword()">
-                        <label for="show-password">إظهار كلمة المرور</label>
+                    <div class="options-container">
+                        <div>
+                            <input type="checkbox" id="remember-me" name="remember-me">
+                            <label for="remember-me">تذكرني</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="show-password" onclick="togglePassword()">
+                            <label for="show-password">إظهار كلمة المرور</label>
+                        </div>
                     </div>
 
                     <button type="submit" class="login-btn">تسجيل الدخول</button>
-
-                    <div class="forgot-password">
-                        <a href="forgot-password.html">نسيت كلمة المرور؟</a>
-                    </div>
-
-                    <div class="remember-me">
-                        <input type="checkbox" id="remember-me" name="remember-me">
-                        <label for="remember-me">تذكرني</label>
-                    </div>
                 </form>
             </div>
         </div>
@@ -185,10 +185,6 @@
 
     <footer>
         <div class="footer">
-            <div class="logos">
-                <img src="./assets/university-logo.png" alt="University Logo">
-                <img src="./assets/ccis-logo.png" alt="CCIS Logo">
-            </div>
             &copy; 2024-25 / IMSIU / CCIS&trade;
         </div>
     </footer>
