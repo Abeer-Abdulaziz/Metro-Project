@@ -1,53 +1,95 @@
 <!DOCTYPE html>
-<html lang="en">
-        
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="assets\css\style.css">
-        <link rel="icon" href="./assets/favicon.ico" type="image/x-icon">
-        <title>Sabic Station - Welcome</title>
-    </head>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الشكاوى</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="complaints-page">
 
-    <body>
-        <header>
-            <div class="social">
-                <a href="https://x.com/riyadhtransport" target="_blank">
-                    <img src="./assets/x.svg" alt="X Logo">
-                </a>
-                <a href="mailto:customercare@riyadhbus.sa">
-                    <img src="./assets/email.svg" alt="Email">
-                </a>
+    <header>
+        <div class="social">
+            <a href="https://x.com/riyadhtransport" target="_blank">
+                <img src="./assets/x.svg" alt="X Logo">
+            </a>
+            <a href="mailto:customercare@riyadhbus.sa">
+                <img src="./assets/email.svg" alt="Email">
+            </a>
+        </div>
+        <div>
+            <nav>
+                <a href="index.html">الرئيسية</a>
+                <a href="sign-in.html">تسجيل الدخول</a>
+                <a href="station-management.html" >ادارة المحطات</a>
+                <a href="journey-tracking.html">تتبع الرحلات</a>
+                <a href="path-planning.html">مسارات </a>
+                <a href="ticketing.html">التذاكر</a>
+                <a href="complaints.html" class="active">الشكاوي</a>   
+            </nav>
+        </div>
+    </header>
+
+    <!-- المحتوى الخاص بصفحة الشكاوى -->
+    <div style="display: flex; justify-content: center; align-items: center; min-height: 100vh;">
+        <form id="complaintForm" onsubmit="handleSubmit(event)">
+            <h2 style="text-align: center; color: #333;">Please Enter Your Contact Information</h2>
+
+            <!-- Name Input -->
+            <input type="text" name="name" placeholder="First and Last Name" required style="margin-bottom: 15px;">
+
+            <!-- Email Input -->
+            <input type="email" name="email" placeholder="Email Address" required style="margin-bottom: 15px;">
+
+            <!-- Phone Input -->
+            <input type="text" name="phone" placeholder="Phone Number (Optional)" style="margin-bottom: 15px;">
+
+            <!-- Category Selection -->
+            <select name="complaint-category" required style="margin-bottom: 15px; padding: 10px; border-radius: 8px; width: 100%; border: 1px solid #ddd;">
+                <option value="">Select Complaint Category</option>
+                <option value="service-issues">Service Issues</option>
+                <option value="ticketing">Ticketing and Payment Problems</option>
+                <option value="infrastructure">Station and Train Infrastructure Concerns</option>
+                <option value="safety">Safety and Security Complaints</option>
+                <option value="communication">Communication and Information Gaps</option>
+                <option value="comfort">Comfort and Passenger Experience Issues</option>
+                <option value="parking">Parking and Accessibility Challenges</option>
+                <option value="environment">Environmental Concerns</option>
+                <option value="staff">Staff and Customer Service Feedback</option>
+                <option value="other">Other Passenger Complaints</option>
+            </select>
+
+            <!-- Complaint Textarea -->
+            <textarea name="complaint" placeholder="Please Fill Your Complaint Here" required style="height: 150px; resize: none; margin-bottom: 15px;"></textarea>
+
+            <!-- Submit Button -->
+            <button type="submit">Submit Complaint</button>
+        </form>
+
+        <div id="thankYouNote" style="display: none; text-align: center; color: #333; margin-top: 20px;">
+            <h3>Thank you for bringing this to our attention</h3>
+            <p>We will do our best to resolve the problem.</p>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer">
+            <div class="logos">
+                <img src="./assets/university-logo.png" alt="University Logo">
+                <img src="./assets/ccis-logo.png" alt="CCIS Logo">
             </div>
-            <div>
-                <nav>
-                    <a href="index.html">الرئيسية</a>
-                    <a href="sign-in.html">تسجيل الدخول</a>
-                    <a href="station-management.html" >ادارة المحطات</a>
-                    <a href="journey-tracking.html">تتبع الرحلات</a>
-                    <a href="path-planning.html">مسارات </a>
-                    <a href="ticketing.html">التذاكر</a>
-                    <a href="complaints.html"class="active">الشكاوي</a>
-                </nav>
-            </div>
-        </header>
+            &copy; 2024-25 / IMSIU / CCIS&trade;
+        </div>
+    </footer>
 
+    <script>
+        function handleSubmit(event) {
+            event.preventDefault();
+            document.getElementById('complaintForm').style.display = 'none';
+            document.getElementById('thankYouNote').style.display = 'block';
+        }
+    </script>
 
-
-
-
-
-
-
-        <footer>
-            <div class="footer">
-                <div class="logos">
-                    <img src="./assets/university-logo.png" alt="University Logo">
-                    <img src="./assets/ccis-logo.png" alt="CCIS Logo">
-                </div>
-                &copy; 2024-25 / IMSIU / CCIS&trade;
-            </div>
-        </footer>
-    </body>
-
+    <script src="assets/js/script.js"></script>
+</body>
 </html>
