@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="icon" href="./assets/favicon.ico" type="image/x-icon">
-    <title>Sabic Station - Welcome</title>
+    <title>محطة سابك - مرحبًا</title>
     <style>
         /* تعديل حجم الشعار باستخدام CSS */
         .social img {
@@ -13,10 +13,9 @@
             height: auto;  /* الحفاظ على النسب */
         }
 
-        /* إضافة تنسيقات إضافية للعناصر بين الهدر والفوتر */
         .container {
             display: flex;
-            flex-direction: row;
+            flex-direction: row-reverse; /* تغيير اتجاه العناصر ليتناسب مع الكتابة العربية */
             justify-content: space-between;
             gap: 20px;
             padding: 20px;
@@ -36,6 +35,7 @@
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: right; /* محاذاة النصوص إلى اليمين فقط في الكارت */
         }
 
         .notifications {
@@ -51,8 +51,19 @@
             margin-bottom: 10px;
             display: flex;
             align-items: center;
+            text-align: left; /* محاذاة النصوص إلى اليسار */
         }
-    
+
+        /* تنسيق لون المسار */
+        .path-blue {
+            color: #00509e;  /* اللون الأزرق للمسار */
+            font-weight: bold;
+        }
+
+        /* تنسيق النصوص داخل العناصر */
+        .details, .notifications {
+            text-align: right; /* محاذاة النصوص داخل الكارت إلى اليمين */
+        }
     </style>
 </head>
 
@@ -69,8 +80,8 @@
                 <a href="station-management.html">إدارة المحطات</a>
                 <a href="journey-tracking.html" class="active">تتبع الرحلات</a>
                 <a href="path-planning.html">مسارات</a>
-                <a href="ticketing.htmlTicketing-Booking Page.html">التذاكر</a>
-                <a href="login.html">تسجيل الدخول</a>
+                <a href="ticketing.html">التذاكر</a>
+                <a href="sign-in.html">تسجيل الدخول</a>
                 <a href="index.html">الرئيسية</a>
             </nav>
         </div>
@@ -97,33 +108,33 @@
         <!-- تفاصيل جانبية -->
         <div class="details">
             <h2>تفاصيل الرحلة</h2>
-            <p><strong>رقم الرحلة:</strong> 12345</p>
-            <p><strong>المسار:</strong> محطة A → محطة B → محطة C → محطة D → محطة E</p>
+            <p><strong>رقم الرحلة:</strong> 67890</p>
+            <p><strong>المسار:</strong> <span class="path-blue">المسار الأزرق</span> (محطة الملك عبدالعزيز → محطة العليا → محطة النخيل → محطة المطار → محطة الرياض)</p>
             <p><strong>حالة الرحلة:</strong> في الطريق</p>
-            <p><strong>الوقت المتبقي:</strong> 45 دقيقة</p>
+            <p><strong>الوقت المتبقي:</strong> 30 دقيقة</p>
 
             <!-- الشريط الزمني -->
             <div class="timeline">
                 <h3>الشريط الزمني للرحلة</h3>
                 <div>
-                    <span>1</span>
-                    <p>إقلاع من محطة A</p>
+                    <span>١</span>
+                    <p>إنطلاق من محطة الملك عبدالعزيز</p>
                 </div>
                 <div>
-                    <span>2</span>
-                    <p>في الطريق - مرور بمحطة B</p>
+                    <span>٢</span>
+                    <p>في الطريق - مرور بمحطة العليا</p>
                 </div>
                 <div>
-                    <span>3</span>
-                    <p>الوصول المتوقع إلى محطة C</p>
+                    <span>٣</span>
+                    <p>الوصول المتوقع إلى محطة النخيل</p>
                 </div>
                 <div>
-                    <span>4</span>
-                    <p>في الطريق - مرور بمحطة D</p>
+                    <span>٤</span>
+                    <p>في الطريق - مرور بمحطة المطار</p>
                 </div>
                 <div>
-                    <span>5</span>
-                    <p>الوصول المتوقع إلى محطة E</p>
+                    <span>٥</span>
+                    <p>الوصول المتوقع إلى محطة الرياض</p>
                 </div>
             </div>
         </div>
@@ -132,9 +143,9 @@
         <div class="notifications">
             <h2>التنبيهات</h2>
             <ul>
-                <li>تنبيه: تأخير بسيط بسبب الازدحام.</li>
-                <li>تحديث: تم المرور بمحطة B بنجاح.</li>
-                <li>الطقس: الجو مشمس مع درجة حرارة 28°C.</li>
+                <li>تنبيه: تأخير بسيط بسبب ازدحام السير في منطقة العليا.</li>
+                <li>تحديث: تم المرور بمحطة العليا بنجاح.</li>
+                <li>الطقس: الجو مشمس مع درجة حرارة 30°C.</li>
             </ul>
         </div>
     </div>
