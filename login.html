@@ -8,10 +8,7 @@
     <link rel="icon" href="./assets/favicon.ico" type="image/x-icon">
     <title>Sabic Station - Welcome</title>
     <style>
-
         header,
-        
-
         nav a {
             color: #ffffff;
             text-decoration: none;
@@ -40,7 +37,8 @@
             padding: 20px 30px;
             width: 100%;
             max-width: 400px;
-            text-align: center;
+            text-align: right; /* تغيير النص ليظهر من اليمين لليسار */
+            direction: rtl; /* إضافة اتجاه النص من اليمين لليسار */
         }
 
         .login-card h1 {
@@ -50,7 +48,7 @@
 
         .login-card label {
             display: block;
-            text-align: left;
+            text-align: right; /* جعل النص متجه لليمين */
             margin-bottom: 5px;
             color: #333333;
         }
@@ -88,17 +86,18 @@
             text-decoration: underline;
         }
 
+        /* تعديل محاذاة عناصر "إظهار كلمة المرور" و "تذكرني" لليمين */
         .show-password,
         .remember-me {
             display: flex;
-            flex-direction: column;
-            align-items: flex-start;
+            flex-direction: row-reverse; /* جعل العناصر تظهر من اليمين لليسار */
+            align-items: center;
             margin-bottom: 15px;
         }
 
         .show-password input,
         .remember-me input {
-            margin-right: 10px;
+            margin-left: 10px; /* المسافة بين الـ input والنص */
         }
 
         footer .footer {
@@ -112,17 +111,20 @@
         footer img {
             max-height: 40px;
         }
+
+        /* تعديل حجم الشعار */
+        header .social img {
+            width: 150px; /* تحديد العرض */
+            height: auto; /* الحفاظ على النسب */
+        }
     </style>
 </head>
 
 <body>
     <header>
         <div class="social">
-            <a href="https://x.com/riyadhtransport" target="_blank">
-               
-            </a>
-            <a href="mailto:customercare@riyadhbus.sa">
-                <img src="./assets/email.svg" alt="Email">
+            <a href="#">
+                <img src="C:\Users\renad\OneDrive\سطح المكتب\Metro-Project\Madar logo.png" alt="Madar logo">
             </a>
         </div>
         <div>
@@ -132,8 +134,8 @@
                 <a href="journey-tracking.html">تتبع الرحلات</a>
                 <a href="path-planning.html">مسارات</a>
                 <a href="ticketing.html">التذاكر</a>
-                <a href="sign-in.html"class="active">تسجيل الدخول</a>
-                <a href="index.html" >الرئيسية</a>
+                <a href="sign-in.html" class="active">تسجيل الدخول</a>
+                <a href="index.html">الرئيسية</a>
             </nav>
         </div>
     </header>

@@ -19,7 +19,6 @@ body {
     color: #343a40;
 }
 
-
 header {
     display: flex;
     justify-content: space-between;
@@ -40,7 +39,6 @@ header {
     height: 40px;
     margin-left: 10px;
 }
-
 
 nav {
     display: flex;
@@ -74,7 +72,6 @@ h2 {
     margin-bottom: 20px;
 }
 
-
 ul {
     list-style-type: none;
     padding: 0;
@@ -92,7 +89,6 @@ ul li:hover {
     background-color: #cfd8dc;
 }
 
-
 footer .footer {
     text-align: center;
     padding: 15px;
@@ -104,7 +100,6 @@ footer .footer {
     width: 100%;
     border-top: 4px solid #004f9e3e;
 }
-
 
 .card-container {
     display: flex;
@@ -157,22 +152,18 @@ footer .footer {
     margin: auto;
     background-color: #e0e0e023;
     border-radius: 10px;
-
     height: fit-content;
     width: 80%;
 }
 
 .grad {
-    background: linear-gradient(to bottom right, #003366, #4A148C);
-    /* Blue to Purple */
+    background: linear-gradient(to bottom right, #003366, #4A148C); /* Blue to Purple */
     color: white;
-
-
 }
-
 
 main {
     display: flex;
+    flex-direction: row-reverse; /* النص على اليمين والصورة على اليسار */
     margin: 40px;
 }
 
@@ -214,7 +205,6 @@ main {
     cursor: pointer;
     font-size: 20px;
     margin-bottom: 15px;
-
 }
 
 .cta-button:hover {
@@ -233,7 +223,6 @@ main {
     color: #0056b3;
     border-color: #0056b3;
 }
-
 
 .right-content {
     flex: 1.5;

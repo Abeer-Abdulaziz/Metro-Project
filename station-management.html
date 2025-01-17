@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="icon" href="./assets/favicon.ico" type="image/x-icon">
-    <title>Sabic Station - Welcome</title>
+    <title>محطة سابك - مرحبًا</title>
     <style>
         body {
             background-image: url('https://welcomesaudi.com/uploads/0000/64/2024/11/26/13-saudi-to-launch-first-phase-of-riyadh-metro-on-november-27-2024.jpg');
@@ -29,8 +29,8 @@
         }
 
         .social img {
-            height: 40px;
-            margin-left: 10px;
+            width: 150px;  /* تحديد العرض */
+            height: auto;  /* الحفاظ على النسب */
         }
 
         nav {
@@ -115,6 +115,10 @@
             color: #fdd835;
         }
 
+        .path.purple {
+            color: #9c27b0;
+        }
+
         footer .footer {
             text-align: center;
             padding: 15px;
@@ -132,26 +136,28 @@
             height: 50px;
             margin-right: 15px;
         }
+
+        .left-content {
+            direction: rtl;
+            text-align: right;
+        }
     </style>
 </head>
 <body>
     <header>
         <div class="social">
-            <a href="https://x.com/riyadhtransport" target="_blank">
-               
-            </a>
-            <a href="mailto:customercare@riyadhbus.sa">
-                <img src="./assets/email.svg" alt="Email">
+            <a href="#">
+                <img src="C:\Users\renad\OneDrive\سطح المكتب\Metro-Project\Madar logo.png" alt="Madar logo">
             </a>
         </div>
         <nav>
             <a href="complaints.html">الشكاوى</a>
-                <a href="station-management.html"class="active">إدارة المحطات</a>
-                <a href="journey-tracking.html">تتبع الرحلات</a>
-                <a href="path-planning.html">مسارات</a>
-                <a href="ticketing.html">التذاكر</a>
-                <a href="sign-in.html">تسجيل الدخول</a>
-                <a href="index.html" >الرئيسية</a>
+            <a href="station-management.html" class="active">إدارة المحطات</a>
+            <a href="journey-tracking.html">تتبع الرحلات</a>
+            <a href="path-planning.html">مسارات</a>
+            <a href="ticketing.html">التذاكر</a>
+            <a href="sign-in.html">تسجيل الدخول</a>
+            <a href="index.html">الرئيسية</a>
         </nav>
     </header>
 
@@ -160,7 +166,8 @@
             <div class="card">
                 <div class="card-content">
                     <h3>محطة شمال الرياض</h3>
-                    <p>تخدم المحطة المناطق الشمالية والوسطى من المدينة.</p>
+                    <p>هذه المحطة نقطة انطلاق للمسار الأزرق.</p>
+                    <p>يمكنك التبديل بين المسارات التالية:</p>
                     <span class="path blue">المسار الأزرق</span>
                     <span class="path green">المسار الأخضر</span>
                 </div>
@@ -168,15 +175,17 @@
             <div class="card">
                 <div class="card-content">
                     <h3>محطة وسط الرياض</h3>
-                    <p>تعد هذه المحطة محطة محورية في وسط الرياض.</p>
+                    <p>هذه المحطة نقطة انطلاق للمسار الأحمر.</p>
+                    <p>يمكنك التبديل بين المسارات التالية:</p>
                     <span class="path red">المسار الأحمر</span>
-                    <span class="path green">المسار الأخضر</span>
+                    <span class="path blue">المسار الأزرق</span>
                 </div>
             </div>
             <div class="card">
                 <div class="card-content">
                     <h3>محطة جنوب الرياض</h3>
-                    <p>تخدم المناطق الجنوبية في الرياض، مثل حي البديعة.</p>
+                    <p>هذه المحطة نقطة انطلاق للمسار الأزرق.</p>
+                    <p>يمكنك التبديل بين المسارات التالية:</p>
                     <span class="path blue">المسار الأزرق</span>
                     <span class="path yellow">المسار الأصفر</span>
                 </div>
@@ -184,7 +193,8 @@
             <div class="card">
                 <div class="card-content">
                     <h3>محطة غرب الرياض</h3>
-                    <p>تقع في قلب الغرب وتخدم عدة أحياء سكنية.</p>
+                    <p>هذه المحطة نقطة انطلاق للمسار الأحمر.</p>
+                    <p>يمكنك التبديل بين المسارات التالية:</p>
                     <span class="path red">المسار الأحمر</span>
                     <span class="path orange">المسار البرتقالي</span>
                 </div>
@@ -192,9 +202,19 @@
             <div class="card">
                 <div class="card-content">
                     <h3>محطة المنطقة الصناعية</h3>
-                    <p>تخدم المناطق الصناعية الكبرى ومناطق العمل.</p>
+                    <p>هذه المحطة نقطة انطلاق للمسار الأصفر.</p>
+                    <p>يمكنك التبديل بين المسارات التالية:</p>
                     <span class="path yellow">المسار الأصفر</span>
                     <span class="path orange">المسار البرتقالي</span>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-content">
+                    <h3>محطة المسار البنفسجي</h3>
+                    <p>هذه المحطة نقطة انطلاق للمسار البنفسجي.</p>
+                    <p>يمكنك التبديل بين المسارات التالية:</p>
+                    <span class="path purple">المسار البنفسجي</span>
+                    <span class="path red">المسار الأحمر</span>
                 </div>
             </div>
         </div>
