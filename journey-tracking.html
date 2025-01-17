@@ -1,53 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
-        
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="assets\css\style.css">
-        <link rel="icon" href="./assets/favicon.ico" type="image/x-icon">
-        <title>Sabic Station - Welcome</title>
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" href="./assets/favicon.ico" type="image/x-icon">
+    <title>Sabic Station - Welcome</title>
+    <style>
+        /* تعديل حجم الشعار باستخدام CSS */
+        .social img {
+            width: 150px;  /* تحديد العرض */
+            height: auto;  /* الحفاظ على النسب */
+        }
 
-    <body>
-        <header>
-            <div class="social">
-                <a href="https://x.com/riyadhtransport" target="_blank">
-                    <img src="./assets/x.svg" alt="X Logo">
-                </a>
-                <a href="mailto:customercare@riyadhbus.sa">
-                    <img src="./assets/email.svg" alt="Email">
-                </a>
-            </div>
-            <div>
-                <nav>
-                    <a href="index.html">الرئيسية</a>
-                    <a href="sign-in.html">تسجيل الدخول</a>
-                    <a href="station-management.html" >ادارة المحطات</a>
-                    <a href="journey-tracking.html"class="active">تتبع الرحلات</a>
-                    <a href="path-planning.html">مسارات </a>
-                    <a href="ticketing.html">التذاكر</a>
-                    <a href="complaints.html">الشكاوي</a>
-                </nav>
-            </div>
-        </header>
+        /* إضافة تنسيقات إضافية للعناصر بين الهدر والفوتر */
+        .container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 20px;
+        }
 
+        .map-container {
+            flex: 2;
+            background-color: #f4f4f9;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
 
+        .details {
+            flex: 1;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
 
+        .notifications {
+            flex: 1;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
 
+        /* الشريط الزمني */
+        .timeline div {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+    
+    </style>
+</head>
 
+<body>
+    <header>
+        <div class="social">
+            <a href="#">
+                <img src="C:\Users\renad\OneDrive\سطح المكتب\Metro-Project\Madar logo.png" alt="Madar logo">
+            </a>
+        </div>
+        <div>
+            <nav>
+                <a href="complaints.html">الشكاوى</a>
+                <a href="station-management.html">إدارة المحطات</a>
+                <a href="journey-tracking.html" class="active">تتبع الرحلات</a>
+                <a href="path-planning.html">مسارات</a>
+                <a href="ticketing.htmlTicketing-Booking Page.html">التذاكر</a>
+                <a href="login.html">تسجيل الدخول</a>
+                <a href="index.html">الرئيسية</a>
+            </nav>
+        </div>
+    </header>
 
+    <!-- محتوى الصفحة بين الهدر والفوتر -->
+    <div class="container">
+        <!-- خريطة مركزية -->
+        <div class="map-container">
+            <h2>خريطة المسارات</h2>
+            <div id="map" style="height: 400px; border-radius: 10px;"></div>
+            <script>
+                function initMap() {
+                    const mapOptions = {
+                        center: { lat: 24.7136, lng: 46.6753 }, // Riyadh coordinates
+                        zoom: 12,
+                    };
+                    const map = new google.maps.Map(document.getElementById("map"), mapOptions);
+                }
+            </script>
+            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBpcvzyfaj7CIwZVo6IRBo4w7ei0CY4DEQ&callback=initMap" async defer></script>
+        </div>
 
+        <!-- تفاصيل جانبية -->
+        <div class="details">
+            <h2>تفاصيل الرحلة</h2>
+            <p><strong>رقم الرحلة:</strong> 12345</p>
+            <p><strong>المسار:</strong> محطة A → محطة B → محطة C → محطة D → محطة E</p>
+            <p><strong>حالة الرحلة:</strong> في الطريق</p>
+            <p><strong>الوقت المتبقي:</strong> 45 دقيقة</p>
 
-        <footer>
-            <div class="footer">
-                <div class="logos">
-                    <img src="./assets/university-logo.png" alt="University Logo">
-                    <img src="./assets/ccis-logo.png" alt="CCIS Logo">
+            <!-- الشريط الزمني -->
+            <div class="timeline">
+                <h3>الشريط الزمني للرحلة</h3>
+                <div>
+                    <span>1</span>
+                    <p>إقلاع من محطة A</p>
                 </div>
-                &copy; 2024-25 / IMSIU / CCIS&trade;
+                <div>
+                    <span>2</span>
+                    <p>في الطريق - مرور بمحطة B</p>
+                </div>
+                <div>
+                    <span>3</span>
+                    <p>الوصول المتوقع إلى محطة C</p>
+                </div>
+                <div>
+                    <span>4</span>
+                    <p>في الطريق - مرور بمحطة D</p>
+                </div>
+                <div>
+                    <span>5</span>
+                    <p>الوصول المتوقع إلى محطة E</p>
+                </div>
             </div>
-        </footer>
-    </body>
+        </div>
 
+        <!-- إشعارات تنبيهية -->
+        <div class="notifications">
+            <h2>التنبيهات</h2>
+            <ul>
+                <li>تنبيه: تأخير بسيط بسبب الازدحام.</li>
+                <li>تحديث: تم المرور بمحطة B بنجاح.</li>
+                <li>الطقس: الجو مشمس مع درجة حرارة 28°C.</li>
+            </ul>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer">
+            <div class="logos">
+                <img src="C:\Users\renad\OneDrive\سطح المكتب\Metro-Project\University Logo.png" alt="University Logo">
+                <img src="C:\Users\renad\OneDrive\سطح المكتب\Metro-Project\ccis-logo.png" alt="CCIS Logo">
+            </div>
+            &copy; 2024-25 / IMSIU / CCIS&trade;
+        </div>
+    </footer>
+
+</body>
 </html>

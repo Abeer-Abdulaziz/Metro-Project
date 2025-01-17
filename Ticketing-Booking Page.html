@@ -72,11 +72,13 @@
             background-color: rgba(255, 255, 255, 0.9);
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            width: 270px;
+            padding: 15px;
+            width: 220px; /* تصغير العرض */
             text-align: center;
             transition: transform 0.3s ease;
-            margin-bottom: 20px;
+            margin-bottom: 0; /* رفع المسافة السفلية */
+            position: relative; /* إضافة خاصية position */
+            top: -10px; /* رفع الكروت للأعلى */
         }
 
         .ticket-card:hover {
@@ -84,34 +86,36 @@
         }
 
         .ticket-card h4 {
-            margin-bottom: 15px;
+            margin-bottom: 10px; /* تقليل المسافة */
             color: #00509e;
+            font-size: 16px; /* تقليل حجم الخط */
         }
 
         .ticket-card p {
-            margin: 10px 0;
+            margin: 8px 0; /* تقليل المسافة بين الفقرات */
             color: #333;
+            font-size: 14px; /* تقليل حجم الخط */
         }
 
         .ticket-card .price {
-            font-size: 1.5em;
+            font-size: 1.3em; /* تصغير حجم السعر */
             color: #4CAF50;
             font-weight: bold;
         }
 
         .ticket-card .validity {
-            font-size: 1em;
+            font-size: 0.9em; /* تقليل حجم النص */
             color: #f39c12;
         }
 
         .ticket-card button {
             background-color: #4CAF50;
             color: white;
-            padding: 10px 20px;
+            padding: 8px 16px; /* تقليل الحجم */
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            margin-top: 15px;
+            margin-top: 10px; /* تقليل المسافة العلوية */
         }
 
         .ticket-card button:hover {
@@ -142,6 +146,18 @@
             margin-bottom: 20px;
         }
 
+        .category-title {
+            background-color: rgba(255, 255, 255, 0.9); /* تعديل اللون ليكون شفاف */
+            color: #003366;
+            font-size: 18px;
+            text-align: center;
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            width: 200px;  /* تحديد عرض الكارت */
+            margin: 0 auto;  /* توسيط الكارت */
+        }
+
     </style>
 </head>
 
@@ -158,8 +174,8 @@
                 <a href="station-management.html">إدارة المحطات</a>
                 <a href="journey-tracking.html">تتبع الرحلات</a>
                 <a href="path-planning.html">مسارات</a>
-                <a href="ticketing.html" class="active">التذاكر</a>
-                <a href="sign-in.html">تسجيل الدخول</a>
+                <a href="Ticketing-Booking Page.html" class="active">التذاكر</a>
+                <a href="login.html">تسجيل الدخول</a>
                 <a href="index.html">الرئيسية</a>
             </nav>
         </div>
@@ -167,17 +183,17 @@
 
     <!-- بطاقة التذاكر للدرجة الأولى -->
     <div class="ticket-category">
-        <h3>تذاكر الدرجة الأولى</h3>
+        <h3 class="category-title">تذاكر الدرجة الأولى</h3>
         <div class="card-container">
             <div class="ticket-card">
                 <h4>تذكرة درجة أولى - 1</h4>
-                <p class="price">30 ريال</p>
+                <p class="price">15 ريال</p>
                 <p class="validity">مدة الصلاحية: ساعتين</p>
                 <button>احجز الآن</button>
             </div>
             <div class="ticket-card">
                 <h4>تذكرة درجة أولى - 2</h4>
-                <p class="price">40 ريال</p>
+                <p class="price">30 ريال</p>
                 <p class="validity">مدة الصلاحية: يوم</p>
                 <button>احجز الآن</button>
             </div>
@@ -189,13 +205,13 @@
             </div>
             <div class="ticket-card">
                 <h4>تذكرة درجة أولى - 4</h4>
-                <p class="price">60 ريال</p>
+                <p class="price">80 ريال</p>
                 <p class="validity">مدة الصلاحية: 5 أيام</p>
                 <button>احجز الآن</button>
             </div>
             <div class="ticket-card">
                 <h4>تذكرة درجة أولى - 5</h4>
-                <p class="price">70 ريال</p>
+                <p class="price">100 ريال</p>
                 <p class="validity">مدة الصلاحية: 7 أيام</p>
                 <button>احجز الآن</button>
             </div>
@@ -204,35 +220,35 @@
 
     <!-- بطاقة التذاكر للدرجة الاقتصادية -->
     <div class="ticket-category">
-        <h3>تذاكر الدرجة الاقتصادية</h3>
+        <h3 class="category-title">تذاكر الدرجة الاقتصادية</h3>
         <div class="card-container">
             <div class="ticket-card">
                 <h4>تذكرة اقتصادية - 1</h4>
-                <p class="price">10 ريال</p>
+                <p class="price">5 ريال</p>
                 <p class="validity">مدة الصلاحية: ساعتين</p>
                 <button>احجز الآن</button>
             </div>
             <div class="ticket-card">
                 <h4>تذكرة اقتصادية - 2</h4>
-                <p class="price">15 ريال</p>
+                <p class="price">10 ريال</p>
                 <p class="validity">مدة الصلاحية: يوم</p>
                 <button>احجز الآن</button>
             </div>
             <div class="ticket-card">
                 <h4>تذكرة اقتصادية - 3</h4>
-                <p class="price">20 ريال</p>
+                <p class="price">15 ريال</p>
                 <p class="validity">مدة الصلاحية: 3 أيام</p>
                 <button>احجز الآن</button>
             </div>
             <div class="ticket-card">
                 <h4>تذكرة اقتصادية - 4</h4>
-                <p class="price">25 ريال</p>
+                <p class="price">20 ريال</p>
                 <p class="validity">مدة الصلاحية: 5 أيام</p>
                 <button>احجز الآن</button>
             </div>
             <div class="ticket-card">
                 <h4>تذكرة اقتصادية - 5</h4>
-                <p class="price">30 ريال</p>
+                <p class="price">25 ريال</p>
                 <p class="validity">مدة الصلاحية: 7 أيام</p>
                 <button>احجز الآن</button>
             </div>
