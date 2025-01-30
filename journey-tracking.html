@@ -5,17 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="icon" href="./assets/favicon.ico" type="image/x-icon">
-    <title>مدار الرياض</title>
+    <title>مدار الرياض - تتبع الرحلات</title>
     <style>
-        
         .logo img {
-            width: 150px;  
-            height: auto;  
+            width: 150px;
+            height: auto;
         }
 
         .container {
             display: flex;
-            flex-direction: row-reverse; 
+            flex-direction: row-reverse;
             justify-content: space-between;
             gap: 20px;
             padding: 20px;
@@ -35,38 +34,25 @@
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            text-align: right; 
+            text-align: right;
         }
 
-        .notifications {
-            flex: 1;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
         }
 
-        
-        .timeline div {
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            text-align: left; 
-        }
-
-        
-        .path-blue {
-            color: #00509e;  
-            font-weight: bold;
-        }
-
-        
-        .details, .notifications {
-            text-align: right; 
+        button:hover {
+            background-color: #45a049;
         }
     </style>
 </head>
-
 <body>
     <header>
         <div class="logo">
@@ -74,78 +60,52 @@
                 <img src="C:\Users\renad\OneDrive\سطح المكتب\Metro-Project\Madar logo.png" alt="Madar logo">
             </a>
         </div>
-        <div>
-            <nav>
-                <a href="complaints.html">الشكاوى</a>
-                <a href="station-management.html">إدارة المحطات</a>
-                <a href="journey-tracking.html" class="active">تتبع الرحلات</a>
-                <a href="path-planning.html">مسارات</a>
-                <a href="ticketing.html">التذاكر</a>
-                <a href="sign-in.html">تسجيل الدخول</a>
-                <a href="index.html">الرئيسية</a>
-            </nav>
-        </div>
+        <nav>
+            <a href="complaints.html">الشكاوى</a>
+            <a href="station-management.html">إدارة المحطات</a>
+            <a href="journey-tracking.html" class="active">تتبع الرحلات</a>
+            <a href="path-planning.html">مسارات</a>
+            <a href="ticketing.html">التذاكر</a>
+            <a href="sign-in.html">تسجيل الدخول</a>
+            <a href="index.html">الرئيسية</a>
+        </nav>
     </header>
 
     <div class="container">
-        <!-- خريطة مركزية -->
         <div class="map-container">
             <h2>خريطة المسارات</h2>
             <div id="map" style="height: 400px; border-radius: 10px;"></div>
             <script>
                 function initMap() {
                     const mapOptions = {
-                        center: { lat: 24.7136, lng: 46.6753 }, // Riyadh coordinates
+                        center: { lat: 24.7136, lng: 46.6753 },
                         zoom: 12,
                     };
-                    const map = new google.maps.Map(document.getElementById("map"), mapOptions);
+                    new google.maps.Map(document.getElementById("map"), mapOptions);
                 }
             </script>
-            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBpcvzyfaj7CIwZVo6IRBo4w7ei0CY4DEQ&callback=initMap" async defer></script>
+            <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
         </div>
 
-        <!-- تفاصيل جانبية -->
         <div class="details">
             <h2>تفاصيل الرحلة</h2>
-            <p><strong>رقم الرحلة:</strong> 67890</p>
-            <p><strong>المسار:</strong> <span class="path-blue">المسار الأزرق</span> (محطة الملك عبدالعزيز → محطة العليا → محطة النخيل → محطة المطار → محطة الرياض)</p>
-            <p><strong>حالة الرحلة:</strong> في الطريق</p>
-            <p><strong>الوقت المتبقي:</strong> 30 دقيقة</p>
 
-            <!-- الشريط الزمني -->
-            <div class="timeline">
-                <h3>الشريط الزمني للرحلة</h3>
-                <div>
-                    <span>١</span>
-                    <p>إنطلاق من محطة الملك عبدالعزيز</p>
-                </div>
-                <div>
-                    <span>٢</span>
-                    <p>في الطريق - مرور بمحطة العليا</p>
-                </div>
-                <div>
-                    <span>٣</span>
-                    <p>الوصول المتوقع إلى محطة النخيل</p>
-                </div>
-                <div>
-                    <span>٤</span>
-                    <p>في الطريق - مرور بمحطة المطار</p>
-                </div>
-                <div>
-                    <span>٥</span>
-                    <p>الوصول المتوقع إلى محطة الرياض</p>
-                </div>
-            </div>
-        </div>
+            <label for="start-station">نقطة الانطلاق:</label>
+            <select id="start-station">
+                <option value="" disabled selected>اختر نقطة الانطلاق</option>
+            </select>
 
-        <!-- إشعارات تنبيهية -->
-        <div class="notifications">
-            <h2>التنبيهات</h2>
-            <ul>
-                <li>تنبيه: تأخير بسيط بسبب ازدحام السير في منطقة العليا.</li>
-                <li>تحديث: تم المرور بمحطة العليا بنجاح.</li>
-                <li>الطقس: الجو مشمس مع درجة حرارة 30°C.</li>
-            </ul>
+            <label for="end-station">نقطة الوصول:</label>
+            <select id="end-station">
+                <option value="" disabled selected>اختر نقطة الوصول</option>
+            </select>
+
+            <button onclick="calculateShortestPath()">احسب أقصر مسار</button>
+
+            <h3>أقصر مسار</h3>
+            <p><strong>المسار:</strong> <span id="shortest-path">--</span></p>
+            <p><strong>مدة الرحلة:</strong> <span id="shortest-time">--</span> دقيقة</p>
+            <p><strong>التبديلات بين المسارات:</strong> <span id="path-colors">--</span></p>
         </div>
     </div>
 
@@ -159,6 +119,61 @@
         </div>
     </footer>
 
-</body>
+    <script>
+        document.addEventListener("DOMContentLoaded", async function () {
+            try {
+                const response = await fetch("http://localhost:3000/stations");
+                const stations = await response.json();
 
+                const startSelect = document.getElementById("start-station");
+                const endSelect = document.getElementById("end-station");
+
+                stations.forEach(station => {
+                    const option1 = document.createElement("option");
+                    const option2 = document.createElement("option");
+                    option1.value = option2.value = station;
+                    option1.textContent = option2.textContent = station;
+                    startSelect.appendChild(option1);
+                    endSelect.appendChild(option2);
+                });
+            } catch (error) {
+                console.error("❌ خطأ في جلب المحطات:", error);
+            }
+        });
+
+        async function calculateShortestPath() {
+            const start = document.getElementById("start-station").value;
+            const end = document.getElementById("end-station").value;
+
+            if (!start || !end) {
+                alert("يرجى اختيار نقطة الانطلاق ونقطة الوصول.");
+                return;
+            }
+
+            try {
+                const response = await fetch("http://localhost:3000/shortest-path", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ start, end }),
+                });
+
+                if (!response.ok) throw new Error("فشل في جلب البيانات. تأكد من أسماء المحطات.");
+
+                const data = await response.json();
+
+                if (!data.path || data.path.length === 0) {
+                    alert("❌ لا يوجد مسار متاح بين المحطتين المحددتين!");
+                    return;
+                }
+
+                document.getElementById("shortest-path").textContent = data.path.join(" → ");
+                document.getElementById("shortest-time").textContent = data.time.toFixed(2);
+                document.getElementById("path-colors").textContent = data.lines.join(", ");
+            } catch (error) {
+                console.error("❌ خطأ أثناء حساب المسار:", error);
+                alert("❌ حدث خطأ أثناء حساب المسار.");
+            }
+        }
+    </script>
+</body>
 </html>

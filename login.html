@@ -1,3 +1,38 @@
+<?php
+// بدء الجلسة
+session_start();
+
+// مصفوفة وهمية تحتوي على أسماء المستخدمين وكلمات المرور
+$users = [
+    "admin" => "12345",
+    "user1" => "password123",
+    "user2" => "mypassword"
+];
+
+// التحقق من إذا كان المستخدم قد قام بإرسال النموذج
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+
+    // التحقق من اسم المستخدم وكلمة المرور
+    if (isset($users[$username]) && $users[$username] == $password) {
+        // إذا كانت البيانات صحيحة، تخزين اسم المستخدم في الجلسة
+        $_SESSION['username'] = $username;
+
+        // إذا تم تحديد "تذكرني"
+        if (isset($_POST['remember-me'])) {
+            setcookie('username', $username, time() + (86400 * 30), "/"); // 86400 = 1 يوم
+        }
+
+        // إعادة التوجيه إلى الصفحة الرئيسية بعد النجاح
+        header('Location: ' . $_SERVER['PHP_SELF']);
+        exit();
+    } else {
+        $error_message = "اسم المستخدم أو كلمة المرور غير صحيحة";
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -37,8 +72,8 @@
             padding: 20px 30px;
             width: 100%;
             max-width: 400px;
-            text-align: right; 
-            direction: rtl; 
+            text-align: right;
+            direction: rtl;
         }
 
         .login-card h1 {
@@ -48,7 +83,7 @@
 
         .login-card label {
             display: block;
-            text-align: right; 
+            text-align: right;
             margin-bottom: 5px;
             color: #333333;
         }
@@ -86,18 +121,17 @@
             text-decoration: underline;
         }
 
-        
         .show-password,
         .remember-me {
             display: flex;
-            flex-direction: row-reverse; 
+            flex-direction: row-reverse;
             align-items: center;
             margin-bottom: 15px;
         }
 
         .show-password input,
         .remember-me input {
-            margin-left: 10px; 
+            margin-left: 10px;
         }
 
         footer .footer {
@@ -112,10 +146,9 @@
             max-height: 40px;
         }
 
-        
         header .logo img {
-            width: 150px; 
-            height: auto; 
+            width: 150px;
+            height: auto;
         }
     </style>
 </head>
@@ -144,7 +177,7 @@
         <div class="login-container">
             <div class="login-card">
                 <h1>تسجيل الدخول</h1>
-                <form action="login-process.php" method="POST">
+                <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
                     <label for="username">اسم المستخدم أو البريد الإلكتروني</label>
                     <input type="text" id="username" name="username" placeholder="أدخل اسم المستخدم أو البريد الإلكتروني" required>
 
@@ -166,6 +199,11 @@
                     <div class="forgot-password">
                         <a href="forgot-password.html">نسيت كلمة المرور؟</a>
                     </div>
+                    <?php
+                    if (isset($error_message)) {
+                        echo "<p style='color:red;'>$error_message</p>";
+                    }
+                    ?>
                 </form>
             </div>
         </div>
