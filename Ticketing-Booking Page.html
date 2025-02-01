@@ -1,14 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets\css\style.css">
-    <link rel="icon" href="./assets/favicon.ico" type="image/x-icon">
     <title>مدار الرياض</title>
     <style>
-        /* CSS */
         body {
             background-image: url('https://welcomesaudi.com/uploads/0000/64/2024/11/26/13-saudi-to-launch-first-phase-of-riyadh-metro-on-november-27-2024.jpg');
             background-repeat: no-repeat;
@@ -16,12 +13,12 @@
             font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f8f9fa;
             color: #343a40;
         }
 
         header {
             display: flex;
+            flex-direction: row-reverse;
             justify-content: space-between;
             align-items: center;
             padding: 20px;
@@ -31,13 +28,14 @@
         }
 
         .logo img {
-            width: 150px;  
-            height: auto;  
+            width: 150px; /* الحجم الأصلي */
+            height: auto;
         }
 
         nav {
             display: flex;
-            justify-content: center;
+            direction: ltr;
+            justify-content: flex-start;
             padding: 10px 0;
         }
 
@@ -48,6 +46,7 @@
             padding: 8px 16px;
             border-radius: 5px;
             transition: background-color 0.3s ease;
+            direction: rtl;
         }
 
         nav a:hover {
@@ -73,12 +72,10 @@
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             padding: 15px;
-            width: 220px; 
+            width: 220px;
             text-align: center;
             transition: transform 0.3s ease;
-            margin-bottom: 0; 
-            position: relative; 
-            top: -10px; 
+            margin-bottom: 0;
         }
 
         .ticket-card:hover {
@@ -86,36 +83,36 @@
         }
 
         .ticket-card h4 {
-            margin-bottom: 10px; 
+            margin-bottom: 10px;
             color: #00509e;
-            font-size: 16px; 
+            font-size: 16px;
         }
 
         .ticket-card p {
-            margin: 8px 0; 
+            margin: 8px 0;
             color: #333;
-            font-size: 14px; 
+            font-size: 14px;
         }
 
         .ticket-card .price {
-            font-size: 1.3em; 
+            font-size: 1.3em;
             color: #4CAF50;
             font-weight: bold;
         }
 
         .ticket-card .validity {
-            font-size: 0.9em; 
+            font-size: 0.9em;
             color: #f39c12;
         }
 
         .ticket-card button {
             background-color: #4CAF50;
             color: white;
-            padding: 8px 16px; 
+            padding: 8px 16px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            margin-top: 10px; 
+            margin-top: 10px;
         }
 
         .ticket-card button:hover {
@@ -135,8 +132,7 @@
         }
 
         .ticket-category {
-            margin-top: 40px;
-            margin-bottom: 40px;
+            margin: 40px 0;
         }
 
         .ticket-category h3 {
@@ -147,17 +143,174 @@
         }
 
         .category-title {
-            background-color: rgba(255, 255, 255, 0.9); 
+            background-color: rgba(255, 255, 255, 0.9);
             color: #003366;
             font-size: 18px;
             text-align: center;
             padding: 10px;
             border-radius: 8px;
-            margin-bottom: 20px;
-            width: 200px;  
-            margin: 0 auto;  
+            width: 200px;
+            margin: 0 auto;
         }
 
+        .apple-pay-card {
+            display: none;
+            background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            width: 350px;
+            margin: 20px auto;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .apple-pay-card::after {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, 
+                transparent 20%, 
+                rgba(255,255,255,0.1) 25%, 
+                transparent 30%);
+            transform: rotate(45deg);
+            animation: shimmer 3s infinite linear;
+        }
+
+        .apple-pay-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+            gap: 15px;
+        }
+
+        .apple-logo {
+            width: 40px;
+        }
+
+        .payment-details {
+            text-align: right;
+            flex-grow: 1;
+        }
+
+        .pay-amount {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ffffff;
+        }
+
+        .payment-description {
+            font-size: 14px;
+            color: #cccccc;
+        }
+
+        .card-chip {
+            width: 40px;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            filter: brightness(0.9);
+        }
+
+        .contactless-icon {
+            width: 30px;
+            position: absolute;
+            top: 25px;
+            right: 20px;
+            opacity: 0.8;
+        }
+
+        .card-number {
+            font-family: 'Courier New', monospace;
+            letter-spacing: 3px;
+            font-size: 20px;
+            margin: 60px 0 15px;
+            position: relative;
+        }
+
+        .card-holder {
+            font-size: 14px;
+            text-align: right;
+            margin: 10px 0;
+        }
+
+        .card-expiry {
+            position: relative;
+            display: inline-block;
+            padding: 5px 15px;
+            background: rgba(0,0,0,0.3);
+            border-radius: 4px;
+        }
+
+        .apple-pay-button {
+            background: #000;
+            border-radius: 8px;
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            font-weight: 500;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: transform 0.2s;
+            color: white;
+            padding: 15px;
+            width: 100%;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .apple-pay-button:active {
+            transform: scale(0.98);
+        }
+
+        .security-text {
+            font-size: 10px;
+            text-align: center;
+            margin-top: 15px;
+            opacity: 0.7;
+        }
+
+        .processing-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .processing-content {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .loader {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #007AFF;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 15px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) rotate(45deg); }
+        }
     </style>
 </head>
 
@@ -168,20 +321,18 @@
                 <img src="C:\Users\renad\OneDrive\سطح المكتب\Metro-Project\Madar logo.png" alt="Madar logo">
             </a>
         </div>
-        <div>
-            <nav>
-                <a href="complaints.html">الشكاوى</a>
-                <a href="station-management.html">إدارة المحطات</a>
-                <a href="journey-tracking.html">تتبع الرحلات</a>
-                <a href="path-planning.html">مسارات</a>
-                <a href="Ticketing-Booking Page.html" class="active">التذاكر</a>
-                <a href="login.html">تسجيل الدخول</a>
-                <a href="index.html">الرئيسية</a>
-            </nav>
-        </div>
+        <nav>
+            <a href="complaints.html">الشكاوى</a>
+            <a href="station-management.html">إدارة المحطات</a>
+            <a href="journey-tracking.html">تتبع الرحلات</a>
+            <a href="path-planning.html">مسارات</a>
+            <a href="Ticketing-Booking-Page.html" class="active">التذاكر</a>
+            <a href="login.html">تسجيل الدخول</a>
+            <a href="index.html">الرئيسية</a>
+        </nav>
     </header>
 
-    <!-- بطاقة التذاكر للدرجة الأولى -->
+    <!-- تذاكر الدرجة الأولى -->
     <div class="ticket-category">
         <h3 class="category-title">تذاكر الدرجة الأولى</h3>
         <div class="card-container">
@@ -189,36 +340,36 @@
                 <h4>تذكرة درجة أولى - 1</h4>
                 <p class="price">15 ريال</p>
                 <p class="validity">مدة الصلاحية: ساعتين</p>
-                <button>احجز الآن</button>
+                <button onclick="showPaymentCard('15 ريال')">احجز الآن</button>
             </div>
             <div class="ticket-card">
                 <h4>تذكرة درجة أولى - 2</h4>
                 <p class="price">30 ريال</p>
                 <p class="validity">مدة الصلاحية: يوم</p>
-                <button>احجز الآن</button>
+                <button onclick="showPaymentCard('30 ريال')">احجز الآن</button>
             </div>
             <div class="ticket-card">
                 <h4>تذكرة درجة أولى - 3</h4>
                 <p class="price">50 ريال</p>
                 <p class="validity">مدة الصلاحية: 3 أيام</p>
-                <button>احجز الآن</button>
+                <button onclick="showPaymentCard('50 ريال')">احجز الآن</button>
             </div>
             <div class="ticket-card">
                 <h4>تذكرة درجة أولى - 4</h4>
                 <p class="price">80 ريال</p>
                 <p class="validity">مدة الصلاحية: 5 أيام</p>
-                <button>احجز الآن</button>
+                <button onclick="showPaymentCard('80 ريال')">احجز الآن</button>
             </div>
             <div class="ticket-card">
                 <h4>تذكرة درجة أولى - 5</h4>
                 <p class="price">100 ريال</p>
                 <p class="validity">مدة الصلاحية: 7 أيام</p>
-                <button>احجز الآن</button>
+                <button onclick="showPaymentCard('100 ريال')">احجز الآن</button>
             </div>
         </div>
     </div>
 
-    <!-- بطاقة التذاكر للدرجة الاقتصادية -->
+    <!-- تذاكر الدرجة الاقتصادية -->
     <div class="ticket-category">
         <h3 class="category-title">تذاكر الدرجة الاقتصادية</h3>
         <div class="card-container">
@@ -226,44 +377,127 @@
                 <h4>تذكرة اقتصادية - 1</h4>
                 <p class="price">5 ريال</p>
                 <p class="validity">مدة الصلاحية: ساعتين</p>
-                <button>احجز الآن</button>
+                <button onclick="showPaymentCard('5 ريال')">احجز الآن</button>
             </div>
             <div class="ticket-card">
                 <h4>تذكرة اقتصادية - 2</h4>
                 <p class="price">10 ريال</p>
                 <p class="validity">مدة الصلاحية: يوم</p>
-                <button>احجز الآن</button>
+                <button onclick="showPaymentCard('10 ريال')">احجز الآن</button>
             </div>
             <div class="ticket-card">
                 <h4>تذكرة اقتصادية - 3</h4>
                 <p class="price">15 ريال</p>
                 <p class="validity">مدة الصلاحية: 3 أيام</p>
-                <button>احجز الآن</button>
+                <button onclick="showPaymentCard('15 ريال')">احجز الآن</button>
             </div>
             <div class="ticket-card">
                 <h4>تذكرة اقتصادية - 4</h4>
                 <p class="price">20 ريال</p>
                 <p class="validity">مدة الصلاحية: 5 أيام</p>
-                <button>احجز الآن</button>
+                <button onclick="showPaymentCard('20 ريال')">احجز الآن</button>
             </div>
             <div class="ticket-card">
                 <h4>تذكرة اقتصادية - 5</h4>
                 <p class="price">25 ريال</p>
                 <p class="validity">مدة الصلاحية: 7 أيام</p>
-                <button>احجز الآن</button>
+                <button onclick="showPaymentCard('25 ريال')">احجز الآن</button>
             </div>
+        </div>
+    </div>
+
+    <!-- بطاقة الدفع -->
+    <div class="apple-pay-card" id="apple-pay-card">
+        <div class="apple-pay-header">
+            <img src="https://cdn.iconscout.com/icon/free/png-256/free-apple-pay-3521422-2945202.png" 
+                 class="apple-logo" 
+                 alt="Apple Pay">
+            <div class="payment-details">
+                <div class="pay-amount" id="selected-price"></div>
+                <div class="payment-description">سعر التذكرة المحددة</div>
+            </div>
+        </div>
+
+        
+             
+             <img src="https://cdn-icons-png.flaticon.com/512/61/61412.png" 
+             class="contactless-icon" 
+             alt="دفع لاتلامسي">
+        
+        <div class="card-details">
+            <div class="card-number" id="dynamic-card-number">•••• •••• •••• 1234</div>
+            <div class="card-holder">حامل البطاقة</div>
+            <div class="card-expiry">
+                <span>MM/YY</span>
+                <span style="margin: 0 5px">•</span>
+                <span>CVV</span>
+            </div>
+        </div>
+        
+        <button class="apple-pay-button" onclick="processPayment()">
+            <img src="https://cdn.iconscout.com/icon/free/png-256/free-apple-pay-3521422-2945202.png" 
+                 alt="Apple Pay"
+                 style="width: 20px; vertical-align: middle;">
+            الدفع باستخدام Apple Pay
+        </button>
+        
+        <div class="security-text">مدفوعات آمنة عبر تقنية Apple Pay</div>
+        <div class="cancel-payment" onclick="cancelPayment()" style="cursor: pointer; margin-top: 15px; color: #888;">
+            إلغاء العملية
+        </div>
+    </div>
+
+    <!-- شاشة التحميل -->
+    <div class="processing-overlay" id="processing-overlay">
+        <div class="processing-content">
+            <div class="loader"></div>
+            <h3>جاري معالجة الدفع...</h3>
         </div>
     </div>
 
     <footer>
         <div class="footer">
             <div class="logos">
-                <img src="C:\Users\renad\OneDrive\سطح المكتب\Metro-Project\University Logo.png" alt="University Logo">
-                <img src="C:\Users\renad\OneDrive\سطح المكتب\Metro-Project\ccis-logo.png" alt="CCIS Logo">
+                <img src="C:\Users\renad\OneDrive\سطح المكتب\Metro-Project\University Logo.png" alt="University Logo" style="height: 40px; margin: 0 10px;">
+                <img src="ccis-logo.png" alt="شعار الكلية" style="height: 40px; margin: 0 10px;">
             </div>
-            &copy; 2024-25 / IMSIU / CCIS&trade;
+            <p>&copy; 2024-25 / IMSIU / CCIS&trade;</p>
         </div>
     </footer>
-</body>
 
+    <script>
+        function showPaymentCard(price) {
+            document.querySelectorAll('.ticket-category').forEach(card => {
+                card.style.display = 'none';
+            });
+            
+            const paymentCard = document.getElementById('apple-pay-card');
+            paymentCard.style.display = 'block';
+            
+            document.getElementById('selected-price').textContent = price;
+            
+            const priceNum = parseInt(price.replace('ريال', '').trim());
+            const dynamicNumber = String(priceNum * 1234).padEnd(16, '0').substring(0, 16);
+            document.getElementById('dynamic-card-number').textContent = 
+                dynamicNumber.match(/.{1,4}/g).join('  ');
+        }
+
+        function cancelPayment() {
+            document.querySelectorAll('.ticket-category').forEach(card => {
+                card.style.display = 'block';
+            });
+            document.getElementById('apple-pay-card').style.display = 'none';
+        }
+
+        function processPayment() {
+            document.getElementById('processing-overlay').style.display = 'flex';
+            
+            setTimeout(() => {
+                document.getElementById('processing-overlay').style.display = 'none';
+                alert('تمت عملية الدفع بنجاح!');
+                cancelPayment();
+            }, 3000);
+        }
+    </script>
+</body>
 </html>

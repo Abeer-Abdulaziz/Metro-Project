@@ -1,20 +1,22 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="icon" href="./assets/favicon.ico" type="image/x-icon">
-    <title>مدار الرياض - تتبع الرحلات</title>
+    <title>مدار الرياض</title>
     <style>
-        .logo img {
-            width: 150px;
-            height: auto;
+        /* تعديل حجم الشعار باستخدام CSS */
+        .social img {
+            width: 150px;  /* تحديد العرض */
+            height: auto;  /* الحفاظ على النسب */
         }
 
+        /* إضافة تنسيقات إضافية للعناصر بين الهدر والفوتر */
         .container {
             display: flex;
-            flex-direction: row-reverse;
+            flex-direction: row;
             justify-content: space-between;
             gap: 20px;
             padding: 20px;
@@ -34,70 +36,80 @@
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            text-align: right;
         }
 
-        button {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: background-color 0.3s;
+        .notifications {
+            flex: 1;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
-        button:hover {
-            background-color: #45a049;
+        /* الشريط الزمني */
+        .timeline div {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        /* تنسيق لون المسار */
+        .path-blue {
+            color: #00509e;  /* اللون الأزرق للمسار */
+            font-weight: bold;
         }
     </style>
 </head>
+
 <body>
     <header>
-        <div class="logo">
+        <div class="social">
             <a href="#">
                 <img src="C:\Users\renad\OneDrive\سطح المكتب\Metro-Project\Madar logo.png" alt="Madar logo">
             </a>
         </div>
-        <nav>
-            <a href="complaints.html">الشكاوى</a>
-            <a href="station-management.html">إدارة المحطات</a>
-            <a href="journey-tracking.html" class="active">تتبع الرحلات</a>
-            <a href="path-planning.html">مسارات</a>
-            <a href="ticketing.html">التذاكر</a>
-            <a href="sign-in.html">تسجيل الدخول</a>
-            <a href="index.html">الرئيسية</a>
-        </nav>
+        <div>
+            <nav>
+                <a href="complaints.html">الشكاوى</a>
+                <a href="station-management.html">إدارة المحطات</a>
+                <a href="journey-tracking.html" class="active">تتبع الرحلات</a>
+                <a href="path-planning.html">مسارات</a>
+                <a href="Ticketing-Booking-Page.html" >التذاكر</a>
+                <a href="login.html">تسجيل الدخول</a>
+                <a href="index.html">الرئيسية</a>
+            </nav>
+        </div>
     </header>
 
+    <!-- محتوى الصفحة بين الهدر والفوتر -->
     <div class="container">
+        <!-- خريطة مركزية -->
         <div class="map-container">
             <h2>خريطة المسارات</h2>
             <div id="map" style="height: 400px; border-radius: 10px;"></div>
-            <script>
-                function initMap() {
-                    const mapOptions = {
-                        center: { lat: 24.7136, lng: 46.6753 },
-                        zoom: 12,
-                    };
-                    new google.maps.Map(document.getElementById("map"), mapOptions);
-                }
-            </script>
-            <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
         </div>
 
+        <!-- تفاصيل جانبية -->
         <div class="details">
             <h2>تفاصيل الرحلة</h2>
-
             <label for="start-station">نقطة الانطلاق:</label>
             <select id="start-station">
                 <option value="" disabled selected>اختر نقطة الانطلاق</option>
+                <option value="محطة شمال الرياض">محطة شمال الرياض</option>
+                <option value="محطة وسط الرياض">محطة وسط الرياض</option>
+                <option value="محطة جنوب الرياض">محطة جنوب الرياض</option>
+                <option value="محطة غرب الرياض">محطة غرب الرياض</option>
+                <option value="محطة شرق الرياض">محطة شرق الرياض</option>
             </select>
 
             <label for="end-station">نقطة الوصول:</label>
             <select id="end-station">
                 <option value="" disabled selected>اختر نقطة الوصول</option>
+                <option value="محطة شمال الرياض">محطة شمال الرياض</option>
+                <option value="محطة وسط الرياض">محطة وسط الرياض</option>
+                <option value="محطة جنوب الرياض">محطة جنوب الرياض</option>
+                <option value="محطة غرب الرياض">محطة غرب الرياض</option>
+                <option value="محطة شرق الرياض">محطة شرق الرياض</option>
             </select>
 
             <button onclick="calculateShortestPath()">احسب أقصر مسار</button>
@@ -106,6 +118,16 @@
             <p><strong>المسار:</strong> <span id="shortest-path">--</span></p>
             <p><strong>مدة الرحلة:</strong> <span id="shortest-time">--</span> دقيقة</p>
             <p><strong>التبديلات بين المسارات:</strong> <span id="path-colors">--</span></p>
+        </div>
+
+        <!-- إشعارات تنبيهية -->
+        <div class="notifications">
+            <h2>التنبيهات</h2>
+            <ul>
+                <li>تنبيه: تأخير بسيط بسبب ازدحام السير في منطقة العليا.</li>
+                <li>تحديث: تم المرور بمحطة العليا بنجاح.</li>
+                <li>الطقس: الجو مشمس مع درجة حرارة 30°C.</li>
+            </ul>
         </div>
     </div>
 
@@ -120,28 +142,58 @@
     </footer>
 
     <script>
-        document.addEventListener("DOMContentLoaded", async function () {
-            try {
-                const response = await fetch("http://localhost:3000/stations");
-                const stations = await response.json();
+        // قائمة المحطات لكل خط
+        const stations = {
+            الأزرق: ["محطة شمال الرياض", "محطة وسط الرياض", "محطة جنوب الرياض"],
+            الأحمر: ["محطة وسط الرياض", "محطة غرب الرياض"],
+            البرتقالي: ["محطة جنوب الرياض", "محطة غرب الرياض", "محطة شرق الرياض"],
+            الأصفر: ["محطة شمال الرياض"],
+            الأخضر: ["محطة وسط الرياض"],
+            البنفسجي: ["محطة شمال الرياض", "محطة شرق الرياض"]
+        };
 
-                const startSelect = document.getElementById("start-station");
-                const endSelect = document.getElementById("end-station");
+        // نقاط التبديل بين الخطوط
+        const transferStations = {
+            "محطة شمال الرياض": ["الأزرق", "الأصفر", "البنفسجي"],
+            "محطة وسط الرياض": ["الأزرق", "الأحمر", "الأخضر"],
+            "محطة جنوب الرياض": ["الأزرق", "البرتقالي"],
+            "محطة غرب الرياض": ["الأحمر", "البرتقالي"],
+            "محطة شرق الرياض": ["البرتقالي", "البنفسجي"]
+        };
 
-                stations.forEach(station => {
-                    const option1 = document.createElement("option");
-                    const option2 = document.createElement("option");
-                    option1.value = option2.value = station;
-                    option1.textContent = option2.textContent = station;
-                    startSelect.appendChild(option1);
-                    endSelect.appendChild(option2);
-                });
-            } catch (error) {
-                console.error("❌ خطأ في جلب المحطات:", error);
-            }
+        // المسافات بين المحطات المتجاورة (بالكيلومترات)
+        const distances = {
+            الأزرق: [10, 15], // المسافة بين شمال الرياض ووسط الرياض، ووسط الرياض وجنوب الرياض
+            الأحمر: [12], // المسافة بين وسط الرياض وغرب الرياض
+            البرتقالي: [14, 16], // المسافة بين جنوب الرياض وغرب الرياض، وغرب الرياض وشرق الرياض
+            الأصفر: [], // لا توجد مسافات للمسار الأصفر
+            الأخضر: [], // لا توجد مسافات للمسار الأخضر
+            البنفسجي: [18] // المسافة بين شمال الرياض وشرق الرياض
+        };
+
+        // سرعة القطار (بالكيلومتر في الساعة)
+        const trainSpeed = 80;
+
+        // تعبئة قوائم المحطات
+        document.addEventListener("DOMContentLoaded", function () {
+            const startSelect = document.getElementById("start-station");
+            const endSelect = document.getElementById("end-station");
+
+            // دمج جميع المحطات في قائمة واحدة
+            const allStations = [...stations.blue, ...stations.red, ...stations.orange, ...stations.yellow, ...stations.green, ...stations.purple];
+
+            allStations.forEach(station => {
+                const option1 = document.createElement("option");
+                const option2 = document.createElement("option");
+                option1.value = option2.value = station;
+                option1.textContent = option2.textContent = station;
+                startSelect.appendChild(option1);
+                endSelect.appendChild(option2);
+            });
         });
 
-        async function calculateShortestPath() {
+        // خوارزمية حساب أقصر مسار
+        function calculateShortestPath() {
             const start = document.getElementById("start-station").value;
             const end = document.getElementById("end-station").value;
 
@@ -150,30 +202,128 @@
                 return;
             }
 
-            try {
-                const response = await fetch("http://localhost:3000/shortest-path", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ start, end }),
-                });
-
-                if (!response.ok) throw new Error("فشل في جلب البيانات. تأكد من أسماء المحطات.");
-
-                const data = await response.json();
-
-                if (!data.path || data.path.length === 0) {
-                    alert("❌ لا يوجد مسار متاح بين المحطتين المحددتين!");
-                    return;
-                }
-
-                document.getElementById("shortest-path").textContent = data.path.join(" → ");
-                document.getElementById("shortest-time").textContent = data.time.toFixed(2);
-                document.getElementById("path-colors").textContent = data.lines.join(", ");
-            } catch (error) {
-                console.error("❌ خطأ أثناء حساب المسار:", error);
-                alert("❌ حدث خطأ أثناء حساب المسار.");
+            // حساب المسار الأقصر بناءً على البيانات
+            const path = findShortestPath(start, end);
+            if (path) {
+                document.getElementById("shortest-path").textContent = path.join(" → ");
+                const time = calculateTravelTime(path);
+                document.getElementById("shortest-time").textContent = time.toFixed(2);
+                document.getElementById("path-colors").textContent = getPathColors(path).join(", ");
+                drawPathOnMap(path);
+            } else {
+                alert("❌ لا يوجد مسار متاح بين المحطتين المحددتين!");
             }
         }
+
+        // دالة لحساب المسار الأقصر
+        function findShortestPath(start, end) {
+            const visited = new Set();
+            const queue = [[start]];
+
+            while (queue.length > 0) {
+                const path = queue.shift();
+                const node = path[path.length - 1];
+
+                if (node === end) {
+                    return path;
+                }
+
+                if (!visited.has(node)) {
+                    visited.add(node);
+
+                    const neighbors = getNeighbors(node);
+                    for (const neighbor of neighbors) {
+                        queue.push([...path, neighbor]);
+                    }
+                }
+            }
+
+            return null;
+        }
+
+        // دالة للحصول على المحطات المجاورة
+        function getNeighbors(station) {
+            const neighbors = [];
+            for (const line in stations) {
+                if (stations[line].includes(station)) {
+                    const index = stations[line].indexOf(station);
+                    if (index > 0) {
+                        neighbors.push(stations[line][index - 1]);
+                    }
+                    if (index < stations[line].length - 1) {
+                        neighbors.push(stations[line][index + 1]);
+                    }
+                }
+            }
+            return neighbors;
+        }
+
+        // دالة لحساب زمن الرحلة
+        function calculateTravelTime(path) {
+            let totalDistance = 0;
+            for (let i = 0; i < path.length - 1; i++) {
+                const currentStation = path[i];
+                const nextStation = path[i + 1];
+                for (const line in stations) {
+                    if (stations[line].includes(currentStation) && stations[line].includes(nextStation)) {
+                        const index1 = stations[line].indexOf(currentStation);
+                        const index2 = stations[line].indexOf(nextStation);
+                        totalDistance += distances[line][Math.min(index1, index2)];
+                        break;
+                    }
+                }
+            }
+            return (totalDistance / trainSpeed) * 60; // تحويل الزمن إلى دقائق
+        }
+
+        // دالة للحصول على ألوان المسارات
+        function getPathColors(path) {
+            const colors = [];
+            for (let i = 0; i < path.length - 1; i++) {
+                const currentStation = path[i];
+                const nextStation = path[i + 1];
+                for (const line in stations) {
+                    if (stations[line].includes(currentStation) && stations[line].includes(nextStation)) {
+                        colors.push(line);
+                        break;
+                    }
+                }
+            }
+            return colors;
+        }
+
+        // دالة لرسم المسار على الخريطة
+        function drawPathOnMap(path) {
+            const map = new google.maps.Map(document.getElementById("map"), {
+                center: { lat: 24.7136, lng: 46.6753 },
+                zoom: 12,
+            });
+
+            const directionsService = new google.maps.DirectionsService();
+            const directionsRenderer = new google.maps.DirectionsRenderer();
+            directionsRenderer.setMap(map);
+
+            const waypoints = path.slice(1, -1).map(station => ({
+                location: station,
+                stopover: true,
+            }));
+
+            const request = {
+                origin: path[0],
+                destination: path[path.length - 1],
+                waypoints: waypoints,
+                travelMode: google.maps.TravelMode.TRANSIT,
+            };
+
+            directionsService.route(request, (result, status) => {
+                if (status === google.maps.DirectionsStatus.OK) {
+                    directionsRenderer.setDirections(result);
+                } else {
+                    alert("تعذر رسم المسار على الخريطة.");
+                }
+            });
+        }
     </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBpcvzyfaj7CIwZVo6IRBo4w7ei0CY4DEQ&callback=initMap" async defer></script>
 </body>
 </html>
