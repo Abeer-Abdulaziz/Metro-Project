@@ -5,15 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="icon" href="./assets/favicon.ico" type="image/x-icon">
-    <title>مدار الرياض</title>
+    <title>Sabic Station - Welcome</title>
     <style>
-        /* تعديل حجم الشعار باستخدام CSS */
-        .social img {
-            width: 150px;  /* تحديد العرض */
-            height: auto;  /* الحفاظ على النسب */
+        /* تنسيقات الخريطة */
+        #map {
+            height: 500px;
+            width: 100%;
+            border-radius: 10px;
+            margin-top: 20px;
         }
 
-        /* إضافة تنسيقات إضافية للعناصر بين الهدر والفوتر */
         .container {
             display: flex;
             flex-direction: row;
@@ -46,17 +47,61 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
-        /* الشريط الزمني */
-        .timeline div {
+        .notification-item {
             margin-bottom: 10px;
-            display: flex;
-            align-items: center;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            border-left: 4px solid #00509e;
         }
 
-        /* تنسيق لون المسار */
-        .path-blue {
-            color: #00509e;  /* اللون الأزرق للمسار */
-            font-weight: bold;
+        .notification-item.alert {
+            border-left-color: #ff0000;
+        }
+
+        .notification-item.update {
+            border-left-color: #008000;
+        }
+
+        .notification-item.weather {
+            border-left-color: #ff8c00;
+        }
+
+        .station-info {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .station-info h2 {
+            margin-bottom: 15px;
+        }
+
+        .station-info ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .station-info ul li {
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            border-left: 4px solid #00509e;
+        }
+
+        .station-info ul li.alert {
+            border-left-color: #ff0000;
+        }
+
+        .station-info ul li.update {
+            border-left-color: #008000;
+        }
+
+        .station-info ul li.weather {
+            border-left-color: #ff8c00;
         }
     </style>
 </head>
@@ -74,8 +119,8 @@
                 <a href="station-management.html">إدارة المحطات</a>
                 <a href="journey-tracking.html" class="active">تتبع الرحلات</a>
                 <a href="path-planning.html">مسارات</a>
-                <a href="Ticketing-Booking-Page.html" >التذاكر</a>
-                <a href="login.html">تسجيل الدخول</a>
+                <a href="ticketing.html">التذاكر</a>
+                <a href="sign-in.html">تسجيل الدخول</a>
                 <a href="index.html">الرئيسية</a>
             </nav>
         </div>
@@ -86,7 +131,7 @@
         <!-- خريطة مركزية -->
         <div class="map-container">
             <h2>خريطة المسارات</h2>
-            <div id="map" style="height: 400px; border-radius: 10px;"></div>
+            <div id="map"></div>
         </div>
 
         <!-- تفاصيل جانبية -->
@@ -123,12 +168,54 @@
         <!-- إشعارات تنبيهية -->
         <div class="notifications">
             <h2>التنبيهات</h2>
-            <ul>
-                <li>تنبيه: تأخير بسيط بسبب ازدحام السير في منطقة العليا.</li>
-                <li>تحديث: تم المرور بمحطة العليا بنجاح.</li>
-                <li>الطقس: الجو مشمس مع درجة حرارة 30°C.</li>
-            </ul>
+            <div id="notifications-list">
+                <!-- التنبيهات سيتم إضافتها هنا بشكل ديناميكي -->
+            </div>
         </div>
+    </div>
+
+    <!-- معلومات المحطات والمسارات -->
+    <div class="station-info">
+        <h2>معلومات المحطات والمسارات</h2>
+        <ul>
+            <li>
+                <strong>محطة شمال الرياض:</strong> نقطة انطلاق للمسار الأزرق. يمكنك التبديل بين المسارات التالية: المسار الأزرق، المسار الأصفر، المسار البنفسجي.
+            </li>
+            <li>
+                <strong>محطة وسط الرياض:</strong> نقطة انطلاق للمسار الأحمر. يمكنك التبديل بين المسارات التالية: المسار الأحمر، المسار الأزرق، المسار الأخضر.
+            </li>
+            <li>
+                <strong>محطة جنوب الرياض:</strong> نقطة انطلاق للمسار الأزرق. يمكنك التبديل بين المسارات التالية: المسار الأزرق، المسار البرتقالي.
+            </li>
+            <li>
+                <strong>محطة غرب الرياض:</strong> نقطة انطلاق للمسار الأحمر. يمكنك التبديل بين المسارات التالية: المسار الأحمر، المسار البرتقالي.
+            </li>
+            <li>
+                <strong>محطة شرق الرياض:</strong> نقطة انطلاق للمسار البنفسجي. يمكنك التبديل بين المسارات التالية: المسار البنفسجي، المسار الأحمر، المسار البرتقالي.
+            </li>
+        </ul>
+
+        <h3>تفاصيل المسارات</h3>
+        <ul>
+            <li>
+                <strong>المسار الأزرق:</strong> يبدأ من محطة بنك الأول وينتهي عند محطة دار البيضاء. المرافق المحيطة: مركز الملك عبد الله المالي، مركز التسوق الرحاب، مدينة الملك عبد الله الرياضية، فنادق متعددة، مقاهي ومطاعم. الإحصائيات: عدد المحطات: 13 | المسافة: 20 كم.
+            </li>
+            <li>
+                <strong>المسار الأحمر:</strong> يبدأ من محطة مدينة الملك فهد الرياضية وينتهي عند محطة جامعة الملك سعود. المرافق المحيطة: مول الرياض بارك، مستشفى الملك فهد، مجمعات تجارية كبيرة، مطاعم عالمية. الإحصائيات: عدد المحطات: 12 | المسافة: 18 كم.
+            </li>
+            <li>
+                <strong>المسار البرتقالي:</strong> يبدأ من محطة خشم العان وينتهي عند محطة طريق جدة. المرافق المحيطة: مجمعات سكنية، مرافق رياضية، مراكز تجارية صغيرة. الإحصائيات: عدد المحطات: 9 | المسافة: 12 كم.
+            </li>
+            <li>
+                <strong>المسار الأصفر:</strong> يبدأ من محطة صالة مطار الملك خالد 1-2 وينتهي عند محطة المركز المالي. المرافق المحيطة: مطار الملك خالد الدولي، مركز الملك عبد الله المالي، مراكز تجارية كبيرة، فنادق فاخرة. الإحصائيات: عدد المحطات: 14 | المسافة: 25 كم.
+            </li>
+            <li>
+                <strong>المسار الأخضر:</strong> يبدأ من محطة وزارة التعليم وينتهي عند محطة المتحف الوطني. المرافق المحيطة: المتحف الوطني، المراكز الثقافية، مكتبة الملك فهد، الجامعات. الإحصائيات: عدد المحطات: 7 | المسافة: 10 كم.
+            </li>
+            <li>
+                <strong>المسار البنفسجي:</strong> يبدأ من محطة النسيم وينتهي عند محطة المركز المالي. المرافق المحيطة: مراكز مالية، مولات، مراكز تجارية، مطاعم. الإحصائيات: عدد المحطات: 8 | المسافة: 15 كم.
+            </li>
+        </ul>
     </div>
 
     <footer>
@@ -142,57 +229,76 @@
     </footer>
 
     <script>
-        // قائمة المحطات لكل خط
-        const stations = {
-            الأزرق: ["محطة شمال الرياض", "محطة وسط الرياض", "محطة جنوب الرياض"],
-            الأحمر: ["محطة وسط الرياض", "محطة غرب الرياض"],
-            البرتقالي: ["محطة جنوب الرياض", "محطة غرب الرياض", "محطة شرق الرياض"],
-            الأصفر: ["محطة شمال الرياض"],
-            الأخضر: ["محطة وسط الرياض"],
-            البنفسجي: ["محطة شمال الرياض", "محطة شرق الرياض"]
+        // إحداثيات المحطات
+        const stationsCoordinates = {
+            "محطة شمال الرياض": { lat: 24.8136, lng: 46.6753 },
+            "محطة وسط الرياض": { lat: 24.7136, lng: 46.6753 },
+            "محطة جنوب الرياض": { lat: 24.6136, lng: 46.6753 },
+            "محطة غرب الرياض": { lat: 24.7136, lng: 46.5753 },
+            "محطة شرق الرياض": { lat: 24.7136, lng: 46.7753 }
         };
 
-        // نقاط التبديل بين الخطوط
-        const transferStations = {
-            "محطة شمال الرياض": ["الأزرق", "الأصفر", "البنفسجي"],
-            "محطة وسط الرياض": ["الأزرق", "الأحمر", "الأخضر"],
-            "محطة جنوب الرياض": ["الأزرق", "البرتقالي"],
-            "محطة غرب الرياض": ["الأحمر", "البرتقالي"],
-            "محطة شرق الرياض": ["البرتقالي", "البنفسجي"]
+        // ألوان المسارات
+        const pathColors = {
+            الأزرق: "#00509e",
+            الأحمر: "#ff0000",
+            البرتقالي: "#ff8c00",
+            الأصفر: "#ffff00",
+            الأخضر: "#008000",
+            البنفسجي: "#800080"
         };
 
-        // المسافات بين المحطات المتجاورة (بالكيلومترات)
-        const distances = {
-            الأزرق: [10, 15], // المسافة بين شمال الرياض ووسط الرياض، ووسط الرياض وجنوب الرياض
-            الأحمر: [12], // المسافة بين وسط الرياض وغرب الرياض
-            البرتقالي: [14, 16], // المسافة بين جنوب الرياض وغرب الرياض، وغرب الرياض وشرق الرياض
-            الأصفر: [], // لا توجد مسافات للمسار الأصفر
-            الأخضر: [], // لا توجد مسافات للمسار الأخضر
-            البنفسجي: [18] // المسافة بين شمال الرياض وشرق الرياض
-        };
+        // رسم الخريطة
+        let map;
+        let directionsRenderer;
 
-        // سرعة القطار (بالكيلومتر في الساعة)
-        const trainSpeed = 80;
-
-        // تعبئة قوائم المحطات
-        document.addEventListener("DOMContentLoaded", function () {
-            const startSelect = document.getElementById("start-station");
-            const endSelect = document.getElementById("end-station");
-
-            // دمج جميع المحطات في قائمة واحدة
-            const allStations = [...stations.blue, ...stations.red, ...stations.orange, ...stations.yellow, ...stations.green, ...stations.purple];
-
-            allStations.forEach(station => {
-                const option1 = document.createElement("option");
-                const option2 = document.createElement("option");
-                option1.value = option2.value = station;
-                option1.textContent = option2.textContent = station;
-                startSelect.appendChild(option1);
-                endSelect.appendChild(option2);
+        function initMap() {
+            map = new google.maps.Map(document.getElementById("map"), {
+                center: { lat: 24.7136, lng: 46.6753 },
+                zoom: 12,
             });
-        });
 
-        // خوارزمية حساب أقصر مسار
+            directionsRenderer = new google.maps.DirectionsRenderer();
+            directionsRenderer.setMap(map);
+
+            // رسم المحطات
+            for (const station in stationsCoordinates) {
+                new google.maps.Marker({
+                    position: stationsCoordinates[station],
+                    map: map,
+                    title: station,
+                });
+            }
+
+            // رسم المسارات
+            drawPaths();
+        }
+
+        // رسم المسارات
+        function drawPaths() {
+            const paths = [
+                { stations: ["محطة شمال الرياض", "محطة وسط الرياض", "محطة جنوب الرياض"], color: pathColors.الأزرق },
+                { stations: ["محطة وسط الرياض", "محطة غرب الرياض"], color: pathColors.الأحمر },
+                { stations: ["محطة جنوب الرياض", "محطة غرب الرياض", "محطة شرق الرياض"], color: pathColors.البرتقالي },
+                { stations: ["محطة شمال الرياض", "محطة شرق الرياض"], color: pathColors.البنفسجي },
+                { stations: ["محطة شمال الرياض", "محطة وسط الرياض"], color: pathColors.الأصفر }, // المسار الأصفر
+                { stations: ["محطة وسط الرياض", "محطة جنوب الرياض"], color: pathColors.الأحمر } // المسار الأحمر
+            ];
+
+            paths.forEach(path => {
+                const pathCoordinates = path.stations.map(station => stationsCoordinates[station]);
+                new google.maps.Polyline({
+                    path: pathCoordinates,
+                    geodesic: true,
+                    strokeColor: path.color,
+                    strokeOpacity: 1.0,
+                    strokeWeight: 4,
+                    map: map,
+                });
+            });
+        }
+
+        // حساب أقصر مسار
         function calculateShortestPath() {
             const start = document.getElementById("start-station").value;
             const end = document.getElementById("end-station").value;
@@ -202,125 +308,57 @@
                 return;
             }
 
-            // حساب المسار الأقصر بناءً على البيانات
-            const path = findShortestPath(start, end);
-            if (path) {
-                document.getElementById("shortest-path").textContent = path.join(" → ");
-                const time = calculateTravelTime(path);
-                document.getElementById("shortest-time").textContent = time.toFixed(2);
-                document.getElementById("path-colors").textContent = getPathColors(path).join(", ");
-                drawPathOnMap(path);
-            } else {
-                alert("❌ لا يوجد مسار متاح بين المحطتين المحددتين!");
-            }
-        }
-
-        // دالة لحساب المسار الأقصر
-        function findShortestPath(start, end) {
-            const visited = new Set();
-            const queue = [[start]];
-
-            while (queue.length > 0) {
-                const path = queue.shift();
-                const node = path[path.length - 1];
-
-                if (node === end) {
-                    return path;
-                }
-
-                if (!visited.has(node)) {
-                    visited.add(node);
-
-                    const neighbors = getNeighbors(node);
-                    for (const neighbor of neighbors) {
-                        queue.push([...path, neighbor]);
-                    }
-                }
-            }
-
-            return null;
-        }
-
-        // دالة للحصول على المحطات المجاورة
-        function getNeighbors(station) {
-            const neighbors = [];
-            for (const line in stations) {
-                if (stations[line].includes(station)) {
-                    const index = stations[line].indexOf(station);
-                    if (index > 0) {
-                        neighbors.push(stations[line][index - 1]);
-                    }
-                    if (index < stations[line].length - 1) {
-                        neighbors.push(stations[line][index + 1]);
-                    }
-                }
-            }
-            return neighbors;
-        }
-
-        // دالة لحساب زمن الرحلة
-        function calculateTravelTime(path) {
-            let totalDistance = 0;
-            for (let i = 0; i < path.length - 1; i++) {
-                const currentStation = path[i];
-                const nextStation = path[i + 1];
-                for (const line in stations) {
-                    if (stations[line].includes(currentStation) && stations[line].includes(nextStation)) {
-                        const index1 = stations[line].indexOf(currentStation);
-                        const index2 = stations[line].indexOf(nextStation);
-                        totalDistance += distances[line][Math.min(index1, index2)];
-                        break;
-                    }
-                }
-            }
-            return (totalDistance / trainSpeed) * 60; // تحويل الزمن إلى دقائق
-        }
-
-        // دالة للحصول على ألوان المسارات
-        function getPathColors(path) {
-            const colors = [];
-            for (let i = 0; i < path.length - 1; i++) {
-                const currentStation = path[i];
-                const nextStation = path[i + 1];
-                for (const line in stations) {
-                    if (stations[line].includes(currentStation) && stations[line].includes(nextStation)) {
-                        colors.push(line);
-                        break;
-                    }
-                }
-            }
-            return colors;
-        }
-
-        // دالة لرسم المسار على الخريطة
-        function drawPathOnMap(path) {
-            const map = new google.maps.Map(document.getElementById("map"), {
-                center: { lat: 24.7136, lng: 46.6753 },
-                zoom: 12,
-            });
-
             const directionsService = new google.maps.DirectionsService();
-            const directionsRenderer = new google.maps.DirectionsRenderer();
             directionsRenderer.setMap(map);
 
-            const waypoints = path.slice(1, -1).map(station => ({
-                location: station,
-                stopover: true,
-            }));
-
             const request = {
-                origin: path[0],
-                destination: path[path.length - 1],
-                waypoints: waypoints,
+                origin: stationsCoordinates[start],
+                destination: stationsCoordinates[end],
                 travelMode: google.maps.TravelMode.TRANSIT,
             };
 
             directionsService.route(request, (result, status) => {
                 if (status === google.maps.DirectionsStatus.OK) {
                     directionsRenderer.setDirections(result);
+                    document.getElementById("shortest-path").textContent = result.routes[0].summary;
+                    document.getElementById("shortest-time").textContent = Math.floor(result.routes[0].legs[0].duration.value / 60);
+                    document.getElementById("path-colors").textContent = getPathColors(result.routes[0]);
+
+                    // إضافة تنبيهات مرتبطة بالرحلة
+                    updateNotifications(start, end);
                 } else {
                     alert("تعذر رسم المسار على الخريطة.");
                 }
+            });
+        }
+
+        // الحصول على ألوان المسارات
+        function getPathColors(route) {
+            const colors = [];
+            route.legs[0].steps.forEach(step => {
+                if (step.travel_mode === "TRANSIT") {
+                    colors.push(step.transit.line.vehicle.name);
+                }
+            });
+            return colors.join(", ");
+        }
+
+        // تحديث التنبيهات
+        function updateNotifications(start, end) {
+            const notificationsList = document.getElementById("notifications-list");
+            notificationsList.innerHTML = "";
+
+            const notifications = [
+                { type: "alert", message: `تنبيه: تأخير بسيط بسبب ازدحام السير في منطقة ${start}.` },
+                { type: "update", message: `تحديث: تم المرور بمحطة ${start} بنجاح.` },
+                { type: "weather", message: "الطقس: الجو مشمس مع درجة حرارة 30°C." }
+            ];
+
+            notifications.forEach(notification => {
+                const notificationItem = document.createElement("div");
+                notificationItem.className = `notification-item ${notification.type}`;
+                notificationItem.textContent = notification.message;
+                notificationsList.appendChild(notificationItem);
             });
         }
     </script>
