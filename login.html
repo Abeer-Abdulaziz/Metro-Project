@@ -443,7 +443,7 @@
                     <label for="new-password">كلمة المرور</label>
                     <input type="password" id="new-password" name="new-password" placeholder="أدخل كلمة المرور" required>
 
-                    <button type="submit">إنشاء حساب</button>
+                    <button type="button" onclick="register()">إنشاء حساب</button>
                 </form>
                 <div class="new-account">
                     <p>لديك حساب بالفعل؟ <a href="javascript:void(0)" onclick="showLoginForm()">تسجيل الدخول</a></p>
@@ -544,6 +544,30 @@
             document.getElementById('login-card').style.display = 'block';
         }
 
+        function register() {
+    // جلب القيم من الحقول
+    const usernameInput = document.getElementById('new-username').value.trim();
+    const emailInput = document.getElementById('new-email').value.trim();
+    const password = document.getElementById('new-password').value.trim();
+
+    // التحقق من إدخال القيم
+    if (usernameInput === '' || emailInput === '' || password === '') {
+        alert('يرجى إدخال كل الحقول');
+        return;
+    }
+
+    // إذا البريد الإلكتروني بدون @، نضيف له "@gmail.com"
+    const email = emailInput.includes('@') ? emailInput : emailInput + "@gmail.com";
+
+    // عرض معلومات المستخدم
+    document.getElementById('user-name').textContent = usernameInput;
+    document.getElementById('user-email').textContent = email;
+
+    // إظهار كارت معلومات المستخدم وإخفاء كارت التسجيل
+    document.getElementById('register-form').style.display = 'none';
+    document.getElementById('user-info-card').style.display = 'block';
+}
+
         function validateForm() {
     const username = document.getElementById('username').value.trim();
     const password = document.getElementById('password').value;
@@ -597,6 +621,7 @@ function showSuccessMessage(message) {
         toast.remove();
     }, 3000);
 }
+
     </script>
 </body>
 
