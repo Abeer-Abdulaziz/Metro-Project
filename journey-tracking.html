@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -103,11 +103,86 @@
         .station-info ul li.weather {
             border-left-color: #ff8c00;
         }
+
+        .path-color {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            margin-right: 5px;
+        }
+
+        .path-switches {
+            margin-top: 20px;
+        }
+
+        .path-switches h3 {
+            margin-bottom: 10px;
+        }
+
+        .path-switches-list {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .path-switch-item {
+            display: flex;
+            align-items: center;
+            padding: 5px 10px;
+            background-color: #f4f4f9;
+            border-radius: 5px;
+            border-left: 4px solid #00509e;
+        }
+
+        .trip-info {
+            margin-bottom: 20px;
+        }
+
+        .trip-info label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .trip-info select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .trip-info button {
+            width: 100%;
+            padding: 10px;
+            background-color: #00509e;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+
+        .trip-info button:hover {
+            background-color: #003f7d;
+        }
+
+        .trip-details {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .trip-details p {
+            margin: 5px 0;
+        }
     </style>
 </head>
 
 <body>
-    <header>
+    <header dir="ltr">
         <div class="social">
             <a href="#">
                 <img src="C:\Users\renad\OneDrive\سطح المكتب\Metro-Project\Madar logo.png" alt="Madar logo">
@@ -137,32 +212,49 @@
         <!-- تفاصيل جانبية -->
         <div class="details">
             <h2>تفاصيل الرحلة</h2>
-            <label for="start-station">نقطة الانطلاق:</label>
-            <select id="start-station">
-                <option value="" disabled selected>اختر نقطة الانطلاق</option>
-                <option value="محطة شمال الرياض">محطة شمال الرياض</option>
-                <option value="محطة وسط الرياض">محطة وسط الرياض</option>
-                <option value="محطة جنوب الرياض">محطة جنوب الرياض</option>
-                <option value="محطة غرب الرياض">محطة غرب الرياض</option>
-                <option value="محطة شرق الرياض">محطة شرق الرياض</option>
-            </select>
+            <div class="trip-info">
+                <label for="start-station">نقطة الانطلاق:</label>
+                <select id="start-station" onchange="loadStationInfo(this.value)">
+                    <option value="" disabled selected>اختر نقطة الانطلاق</option>
+                    <option value="محطة شمال الرياض">محطة شمال الرياض</option>
+                    <option value="محطة وسط الرياض">محطة وسط الرياض</option>
+                    <option value="محطة جنوب الرياض">محطة جنوب الرياض</option>
+                    <option value="محطة غرب الرياض">محطة غرب الرياض</option>
+                    <option value="محطة شرق الرياض">محطة شرق الرياض</option>
+                </select>
 
-            <label for="end-station">نقطة الوصول:</label>
-            <select id="end-station">
-                <option value="" disabled selected>اختر نقطة الوصول</option>
-                <option value="محطة شمال الرياض">محطة شمال الرياض</option>
-                <option value="محطة وسط الرياض">محطة وسط الرياض</option>
-                <option value="محطة جنوب الرياض">محطة جنوب الرياض</option>
-                <option value="محطة غرب الرياض">محطة غرب الرياض</option>
-                <option value="محطة شرق الرياض">محطة شرق الرياض</option>
-            </select>
+                <label for="end-station">نقطة الوصول:</label>
+                <select id="end-station" onchange="loadStationInfo(this.value)">
+                    <option value="" disabled selected>اختر نقطة الوصول</option>
+                    <option value="محطة شمال الرياض">محطة شمال الرياض</option>
+                    <option value="محطة وسط الرياض">محطة وسط الرياض</option>
+                    <option value="محطة جنوب الرياض">محطة جنوب الرياض</option>
+                    <option value="محطة غرب الرياض">محطة غرب الرياض</option>
+                    <option value="محطة شرق الرياض">محطة شرق الرياض</option>
+                </select>
 
-            <button onclick="calculateShortestPath()">احسب أقصر مسار</button>
+                <button onclick="calculateShortestPath()">احسب أقصر مسار</button>
+                <button onclick="calculateLongestPath()">احسب المسار الأطول</button>
+            </div>
 
-            <h3>أقصر مسار</h3>
-            <p><strong>المسار:</strong> <span id="shortest-path">--</span></p>
-            <p><strong>مدة الرحلة:</strong> <span id="shortest-time">--</span> دقيقة</p>
-            <p><strong>التبديلات بين المسارات:</strong> <span id="path-colors">--</span></p>
+            <!-- تفاصيل الرحلة المحددة -->
+            <div class="trip-details">
+                <h3>تفاصيل الرحلة المحددة</h3>
+                <p><strong>نقطة الانطلاق:</strong> <span id="trip-start">--</span></p>
+                <p><strong>نقطة الوصول:</strong> <span id="trip-end">--</span></p>
+                <p><strong>وقت الانطلاق:</strong> <span id="departure-time">--</span></p>
+                <p><strong>وقت الوصول:</strong> <span id="arrival-time">--</span></p>
+                <p><strong>المسافة:</strong> <span id="trip-distance">--</span> كم</p>
+                <p><strong>عدد المحطات:</strong> <span id="trip-stops">--</span></p>
+                <p><strong>سعر التذكرة:</strong> <span id="ticket-price">--</span> ريال</p>
+                <p><strong>حالة الرحلة:</strong> <span id="trip-status">--</span></p>
+            </div>
+
+            <!-- تفاصيل التبديلات بين المسارات -->
+            <div class="path-switches">
+                <h3>تفاصيل التبديلات</h3>
+                <div id="path-switches-list" class="path-switches-list"></div>
+            </div>
         </div>
 
         <!-- إشعارات تنبيهية -->
@@ -177,48 +269,13 @@
     <!-- معلومات المحطات والمسارات -->
     <div class="station-info">
         <h2>معلومات المحطات والمسارات</h2>
-        <ul>
-            <li>
-                <strong>محطة شمال الرياض:</strong> نقطة انطلاق للمسار الأزرق. يمكنك التبديل بين المسارات التالية: المسار الأزرق، المسار الأصفر، المسار البنفسجي.
-            </li>
-            <li>
-                <strong>محطة وسط الرياض:</strong> نقطة انطلاق للمسار الأحمر. يمكنك التبديل بين المسارات التالية: المسار الأحمر، المسار الأزرق، المسار الأخضر.
-            </li>
-            <li>
-                <strong>محطة جنوب الرياض:</strong> نقطة انطلاق للمسار الأزرق. يمكنك التبديل بين المسارات التالية: المسار الأزرق، المسار البرتقالي.
-            </li>
-            <li>
-                <strong>محطة غرب الرياض:</strong> نقطة انطلاق للمسار الأحمر. يمكنك التبديل بين المسارات التالية: المسار الأحمر، المسار البرتقالي.
-            </li>
-            <li>
-                <strong>محطة شرق الرياض:</strong> نقطة انطلاق للمسار البنفسجي. يمكنك التبديل بين المسارات التالية: المسار البنفسجي، المسار الأحمر، المسار البرتقالي.
-            </li>
-        </ul>
-
-        <h3>تفاصيل المسارات</h3>
-        <ul>
-            <li>
-                <strong>المسار الأزرق:</strong> يبدأ من محطة بنك الأول وينتهي عند محطة دار البيضاء. المرافق المحيطة: مركز الملك عبد الله المالي، مركز التسوق الرحاب، مدينة الملك عبد الله الرياضية، فنادق متعددة، مقاهي ومطاعم. الإحصائيات: عدد المحطات: 13 | المسافة: 20 كم.
-            </li>
-            <li>
-                <strong>المسار الأحمر:</strong> يبدأ من محطة مدينة الملك فهد الرياضية وينتهي عند محطة جامعة الملك سعود. المرافق المحيطة: مول الرياض بارك، مستشفى الملك فهد، مجمعات تجارية كبيرة، مطاعم عالمية. الإحصائيات: عدد المحطات: 12 | المسافة: 18 كم.
-            </li>
-            <li>
-                <strong>المسار البرتقالي:</strong> يبدأ من محطة خشم العان وينتهي عند محطة طريق جدة. المرافق المحيطة: مجمعات سكنية، مرافق رياضية، مراكز تجارية صغيرة. الإحصائيات: عدد المحطات: 9 | المسافة: 12 كم.
-            </li>
-            <li>
-                <strong>المسار الأصفر:</strong> يبدأ من محطة صالة مطار الملك خالد 1-2 وينتهي عند محطة المركز المالي. المرافق المحيطة: مطار الملك خالد الدولي، مركز الملك عبد الله المالي، مراكز تجارية كبيرة، فنادق فاخرة. الإحصائيات: عدد المحطات: 14 | المسافة: 25 كم.
-            </li>
-            <li>
-                <strong>المسار الأخضر:</strong> يبدأ من محطة وزارة التعليم وينتهي عند محطة المتحف الوطني. المرافق المحيطة: المتحف الوطني، المراكز الثقافية، مكتبة الملك فهد، الجامعات. الإحصائيات: عدد المحطات: 7 | المسافة: 10 كم.
-            </li>
-            <li>
-                <strong>المسار البنفسجي:</strong> يبدأ من محطة النسيم وينتهي عند محطة المركز المالي. المرافق المحيطة: مراكز مالية، مولات، مراكز تجارية، مطاعم. الإحصائيات: عدد المحطات: 8 | المسافة: 15 كم.
-            </li>
-        </ul>
+        <div id="station-details">
+            <!-- المعلومات ستظهر هنا عند اختيار محطة -->
+            <p>اختر محطة لرؤية التفاصيل.</p>
+        </div>
     </div>
 
-    <footer>
+    <footer dir="ltr">
         <div class="footer">
             <div class="logos">
                 <img src="C:\Users\renad\OneDrive\سطح المكتب\Metro-Project\University Logo.png" alt="University Logo">
@@ -235,17 +292,41 @@
             "محطة وسط الرياض": { lat: 24.7136, lng: 46.6753 },
             "محطة جنوب الرياض": { lat: 24.6136, lng: 46.6753 },
             "محطة غرب الرياض": { lat: 24.7136, lng: 46.5753 },
-            "محطة شرق الرياض": { lat: 24.7136, lng: 46.7753 }
+            "محطة شرق الرياض": { lat: 24.7136, lng: 46.7753 },
         };
 
         // ألوان المسارات
         const pathColors = {
-            الأزرق: "#00509e",
-            الأحمر: "#ff0000",
-            البرتقالي: "#ff8c00",
-            الأصفر: "#ffff00",
-            الأخضر: "#008000",
-            البنفسجي: "#800080"
+         الأزرق: "#00509e",
+          الأحمر: "#ff0000",
+          البرتقالي: "#ff8c00",
+          الأصفر: "#ffff00",
+           الأخضر: "#008000",
+          البنفسجي: "#800080"
+};
+
+        // معلومات المحطات
+        const stationDetails = {
+            "محطة شمال الرياض": {
+                description: "نقطة انطلاق للمسار الأزرق. يمكنك التبديل بين المسارات التالية: المسار الأزرق، المسار الأصفر، المسار البنفسجي.",
+                routes: ["الأزرق", "الأصفر", "البنفسجي"]
+            },
+            "محطة وسط الرياض": {
+                description: "نقطة انطلاق للمسار الأحمر. يمكنك التبديل بين المسارات التالية: المسار الأحمر، المسار الأزرق، المسار الأخضر.",
+                routes: ["الأحمر", "الأزرق", "الأخضر"]
+            },
+            "محطة جنوب الرياض": {
+                description: "نقطة انطلاق للمسار الأزرق. يمكنك التبديل بين المسارات التالية: المسار الأزرق، المسار البرتقالي.",
+                routes: ["الأزرق", "البرتقالي"]
+            },
+            "محطة غرب الرياض": {
+                description: "نقطة انطلاق للمسار الأحمر. يمكنك التبديل بين المسارات التالية: المسار الأحمر، المسار البرتقالي.",
+                routes: ["الأحمر", "البرتقالي"]
+            },
+            "محطة شرق الرياض": {
+                description: "نقطة انطلاق للمسار البنفسجي. يمكنك التبديل بين المسارات التالية: المسار البنفسجي، المسار الأحمر، المسار البرتقالي.",
+                routes: ["البنفسجي", "الأحمر", "البرتقالي"]
+            }
         };
 
         // رسم الخريطة
@@ -281,8 +362,8 @@
                 { stations: ["محطة وسط الرياض", "محطة غرب الرياض"], color: pathColors.الأحمر },
                 { stations: ["محطة جنوب الرياض", "محطة غرب الرياض", "محطة شرق الرياض"], color: pathColors.البرتقالي },
                 { stations: ["محطة شمال الرياض", "محطة شرق الرياض"], color: pathColors.البنفسجي },
-                { stations: ["محطة شمال الرياض", "محطة وسط الرياض"], color: pathColors.الأصفر }, // المسار الأصفر
-                { stations: ["محطة وسط الرياض", "محطة جنوب الرياض"], color: pathColors.الأحمر } // المسار الأحمر
+                { stations: ["محطة وسط الرياض", "محطة شرق الرياض"], color: pathColors.الأخضر },
+                { stations: ["محطة شمال الرياض", "محطة وسط الرياض", "محطة شرق الرياض"], color: pathColors.الأصفر },
             ];
 
             paths.forEach(path => {
@@ -296,6 +377,45 @@
                     map: map,
                 });
             });
+        }
+
+        // تحميل معلومات المحطة
+        function loadStationInfo(station) {
+            const stationDetailsDiv = document.getElementById("station-details");
+            if (stationDetails[station]) {
+                const details = stationDetails[station];
+                stationDetailsDiv.innerHTML = `
+                    <h3>${station}</h3>
+                    <p>${details.description}</p>
+                    <p><strong>المسارات المتاحة:</strong> ${details.routes.join(", ")}</p>
+                `;
+            } else {
+                stationDetailsDiv.innerHTML = "<p>اختر محطة لرؤية التفاصيل.</p>";
+            }
+        }
+
+        // تحديث تفاصيل الرحلة
+        function updateTripDetails(start, end, route) {
+            document.getElementById("trip-start").textContent = start;
+            document.getElementById("trip-end").textContent = end;
+
+            // وقت الانطلاق والوصول (يمكن استبدالها ببيانات حقيقية)
+            const departureTime = new Date();
+            const arrivalTime = new Date(departureTime.getTime() + route.legs[0].duration.value * 1000);
+
+            document.getElementById("departure-time").textContent = departureTime.toLocaleTimeString();
+            document.getElementById("arrival-time").textContent = arrivalTime.toLocaleTimeString();
+
+            // المسافة وعدد المحطات
+            document.getElementById("trip-distance").textContent = (route.legs[0].distance.value / 1000).toFixed(2);
+            document.getElementById("trip-stops").textContent = route.legs[0].steps.filter(step => step.travel_mode === "TRANSIT").length;
+
+            // سعر التذكرة (يمكن استبدالها ببيانات حقيقية)
+            const ticketPrice = Math.floor(route.legs[0].distance.value / 1000) * 2; // 2 ريال لكل كيلومتر
+            document.getElementById("ticket-price").textContent = ticketPrice;
+
+            // حالة الرحلة
+            document.getElementById("trip-status").textContent = "على الوقت";
         }
 
         // حساب أقصر مسار
@@ -320,9 +440,52 @@
             directionsService.route(request, (result, status) => {
                 if (status === google.maps.DirectionsStatus.OK) {
                     directionsRenderer.setDirections(result);
-                    document.getElementById("shortest-path").textContent = result.routes[0].summary;
-                    document.getElementById("shortest-time").textContent = Math.floor(result.routes[0].legs[0].duration.value / 60);
-                    document.getElementById("path-colors").textContent = getPathColors(result.routes[0]);
+                    updateTripDetails(start, end, result.routes[0]);
+
+                    // عرض تفاصيل التبديلات
+                    const pathDetails = getPathColors(result.routes[0]);
+                    displayPathSwitches(pathDetails);
+
+                    // إضافة تنبيهات مرتبطة بالرحلة
+                    updateNotifications(start, end);
+                } else {
+                    alert("تعذر رسم المسار على الخريطة.");
+                }
+            });
+        }
+
+        // حساب المسار الأطول
+        function calculateLongestPath() {
+            const start = document.getElementById("start-station").value;
+            const end = document.getElementById("end-station").value;
+
+            if (!start || !end) {
+                alert("يرجى اختيار نقطة الانطلاق ونقطة الوصول.");
+                return;
+            }
+
+            const directionsService = new google.maps.DirectionsService();
+            directionsRenderer.setMap(map);
+
+            const request = {
+                origin: stationsCoordinates[start],
+                destination: stationsCoordinates[end],
+                travelMode: google.maps.TravelMode.TRANSIT,
+                provideRouteAlternatives: true, // توفير بدائل للمسارات
+            };
+
+            directionsService.route(request, (result, status) => {
+                if (status === google.maps.DirectionsStatus.OK) {
+                    const longestRoute = result.routes.reduce((longest, route) => {
+                        return route.legs[0].duration.value > longest.legs[0].duration.value ? route : longest;
+                    });
+
+                    directionsRenderer.setDirections({ routes: [longestRoute] });
+                    updateTripDetails(start, end, longestRoute);
+
+                    // عرض تفاصيل التبديلات
+                    const pathDetails = getPathColors(longestRoute);
+                    displayPathSwitches(pathDetails);
 
                     // إضافة تنبيهات مرتبطة بالرحلة
                     updateNotifications(start, end);
@@ -334,13 +497,40 @@
 
         // الحصول على ألوان المسارات
         function getPathColors(route) {
-            const colors = [];
+            const pathDetails = [];
             route.legs[0].steps.forEach(step => {
                 if (step.travel_mode === "TRANSIT") {
-                    colors.push(step.transit.line.vehicle.name);
+                    const transitType = step.transit.line.vehicle.type; // نوع وسيلة النقل (مترو أو باص)
+                    const lineName = step.transit.line.name; // اسم الخط
+                    const color = pathColors[lineName]; // لون المسار
+                    pathDetails.push({
+                        type: transitType,
+                        name: lineName,
+                        color: color
+                    });
                 }
             });
-            return colors.join(", ");
+            return pathDetails;
+        }
+
+        // عرض التبديلات بين المسارات
+        function displayPathSwitches(pathDetails) {
+            const pathSwitchesList = document.getElementById("path-switches-list");
+            pathSwitchesList.innerHTML = ""; // مسح المحتوى القديم
+
+            if (pathDetails.length > 0) {
+                pathDetails.forEach(detail => {
+                    const switchItem = document.createElement("div");
+                    switchItem.className = "path-switch-item";
+                    switchItem.innerHTML = `
+                        <span class="path-color" style="background-color: ${detail.color};"></span>
+                        <strong>${detail.type === "BUS" ? "باص" : "مترو"}:</strong> ${detail.name}
+                    `;
+                    pathSwitchesList.appendChild(switchItem);
+                });
+            } else {
+                pathSwitchesList.innerHTML = "<p>لا توجد تبديلات بين المسارات.</p>";
+            }
         }
 
         // تحديث التنبيهات
@@ -350,7 +540,7 @@
 
             const notifications = [
                 { type: "alert", message: `تنبيه: تأخير بسيط بسبب ازدحام السير في منطقة ${start}.` },
-                { type: "update", message: `تحديث: تم المرور بمحطة ${start} بنجاح.` },
+                { type: "update", message: `تحديث: تم المرور بمحطة ${start} بنجاح. `},
                 { type: "weather", message: "الطقس: الجو مشمس مع درجة حرارة 30°C." }
             ];
 
