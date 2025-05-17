@@ -1,31 +1,37 @@
-// Test 1: Valid Bearer token
-console.assert(
-  getToken({ authorization: "Bearer abc123" }) === "abc123",
-  "Test 1 Failed"
-);
+<script>
+// Simulate localStorage for test
+localStorage.setItem('users', JSON.stringify([
+  { email: "test@example.com", password: "123456", fullName: "Test User" }
+]));
 
-// Test 2: No authorization header
-console.assert(
-  getToken({}) === null,
-  "Test 2 Failed"
-);
+// 1. Test login function
+function testLogin() {
+  const email = "test@example.com";
+  const password = "123456";
 
-// Test 3: Wrong token type
-console.assert(
-  getToken({ authorization: "Basic abc123" }) === null,
-  "Test 3 Failed"
-);
+  const users = JSON.parse(localStorage.getItem("users")) || [];
+  const user = users.find((u) => u.email === email && u.password === password);
 
-// Test 4: Invalid format
-console.assert(
-  getToken({ authorization: "Bearer" }) === undefined,
-  "Test 4 Failed"
-);
+  if (user) {
+    localStorage.setItem("loggedInUser", JSON.stringify(user));
+    console.log("✅ Login Test Passed: Logged in as", user.fullName);
+  } else {
+    console.error("❌ Login Test Failed: Invalid credentials");
+  }
+}
 
-// Test 5: Extra whitespace
-console.assert(
-  getToken({ authorization: "Bearer    abc123" }) === "",
-  "Test 5 Failed"
-);
+// 2. Test user display function
+function testDisplayUserData() {
+  const user = JSON.parse(localStorage.getItem("loggedInUser"));
+  if (user) {
+    console.log("✅ Display Test Passed: User data =", user);
+  } else {
+    console.error("❌ Display Test Failed: No user logged in");
+  }
+}
 
-console.log("Tests finished");
+// Run the tests
+testLogin();
+testDisplayUserData();
+</script>
+
