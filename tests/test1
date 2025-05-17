@@ -1,0 +1,31 @@
+// Test 1: Valid Bearer token
+console.assert(
+  getToken({ authorization: "Bearer abc123" }) === "abc123",
+  "Test 1 Failed"
+);
+
+// Test 2: No authorization header
+console.assert(
+  getToken({}) === null,
+  "Test 2 Failed"
+);
+
+// Test 3: Wrong token type
+console.assert(
+  getToken({ authorization: "Basic abc123" }) === null,
+  "Test 3 Failed"
+);
+
+// Test 4: Invalid format
+console.assert(
+  getToken({ authorization: "Bearer" }) === undefined,
+  "Test 4 Failed"
+);
+
+// Test 5: Extra whitespace
+console.assert(
+  getToken({ authorization: "Bearer    abc123" }) === "",
+  "Test 5 Failed"
+);
+
+console.log("Tests finished");
